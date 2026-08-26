@@ -8,14 +8,14 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ profile }) => {
   return (
-    <footer className="w-full border-t border-slate-200/80 mt-16 py-10 px-4 text-center text-xs text-[#64748B]">
+    <footer className="w-full border-t border-[#E4E7EC] mt-16 py-10 px-4 text-center text-xs text-[#667085]">
       <div className="max-w-4xl mx-auto space-y-3">
-        <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 font-medium text-[#64748B]">
+        <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 font-medium text-[#667085]">
           <a
             href={profile.website}
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-[#4F46E5] transition-colors"
+            className="hover:text-[#173B57] transition-colors"
           >
             Portfolio
           </a>
@@ -23,7 +23,7 @@ export const Footer: React.FC<FooterProps> = ({ profile }) => {
             href="https://github.com/vikashjoshi"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-[#4F46E5] transition-colors"
+            className="hover:text-[#173B57] transition-colors"
           >
             GitHub
           </a>
@@ -31,7 +31,7 @@ export const Footer: React.FC<FooterProps> = ({ profile }) => {
             href="https://x.com/vikashjoshi"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-[#4F46E5] transition-colors"
+            className="hover:text-[#173B57] transition-colors"
           >
             Twitter / X
           </a>
@@ -39,13 +39,13 @@ export const Footer: React.FC<FooterProps> = ({ profile }) => {
             href="https://linkedin.com/in/vikashjoshi"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-[#4F46E5] transition-colors"
+            className="hover:text-[#173B57] transition-colors"
           >
             LinkedIn
           </a>
         </div>
 
-        <p className="text-[#64748B]/80">
+        <p className="text-[#667085]/80">
           &copy; {new Date().getFullYear()} {profile.name}. All rights reserved.
         </p>
       </div>

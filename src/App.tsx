@@ -145,17 +145,13 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F7F9FC] flex flex-col text-[#111827] font-sans selection:bg-[#4F46E5] selection:text-white relative overflow-x-hidden">
-      {/* Subtle Premium Multi-layer Background Ambient Glows (Blue, Indigo, Purple, Cyan, Peach) */}
+    <div className="min-h-screen bg-[#F7F7F5] flex flex-col text-[#172033] font-sans selection:bg-[#173B57] selection:text-white relative overflow-x-hidden">
+      {/* Subtle Professional Hero Area Glow (Navy & Teal) */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        {/* Top Indigo / Blue glow */}
-        <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[800px] h-[550px] bg-gradient-to-b from-[#4F46E5]/6 via-[#3B82F6]/4 to-transparent blur-3xl rounded-full" />
-        {/* Mid-Left Soft Purple glow */}
-        <div className="absolute top-[25%] -left-36 w-[420px] h-[420px] bg-[#8B5CF6]/3 blur-3xl rounded-full" />
-        {/* Mid-Right Soft Cyan glow */}
-        <div className="absolute top-[48%] -right-36 w-[450px] h-[450px] bg-[#06B6D4]/3 blur-3xl rounded-full" />
-        {/* Lower-Left Soft Peach glow */}
-        <div className="absolute top-[72%] -left-28 w-[400px] h-[400px] bg-[#FB923C]/3 blur-3xl rounded-full" />
+        {/* Top Navy & Teal subtle hero glow */}
+        <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[750px] h-[500px] bg-gradient-to-b from-[#173B57]/5 via-[#2F7D78]/3 to-transparent blur-3xl rounded-full" />
+        {/* Mid subtle accent */}
+        <div className="absolute top-[35%] -right-36 w-[400px] h-[400px] bg-[#2F7D78]/2 blur-3xl rounded-full" />
       </div>
 
       {/* Top Navbar */}
@@ -191,18 +187,18 @@ export default function App() {
           projectsCount={projects.length}
         />
 
-        {/* Tab Content Wrappers with Harmonious Sectional Backgrounds */}
+        {/* Tab Content Wrappers */}
         <div className="transition-all duration-300">
           {/* Tab 1: Content Grid */}
           {activeTab === 'posts' && (
-            <div className="bg-[#F8FAFC]/70 rounded-2xl sm:rounded-3xl p-3 sm:p-6 border border-slate-200/50 shadow-xs">
+            <div className="bg-[#F7F7F5] rounded-2xl sm:rounded-3xl p-2 sm:p-4">
               <PostsGrid posts={posts} onSelectPost={setSelectedPost} />
             </div>
           )}
 
           {/* Tab 2: Projects Showcase */}
           {activeTab === 'projects' && (
-            <div className="bg-[#EEF3F9]/60 rounded-2xl sm:rounded-3xl p-3 sm:p-6 border border-slate-200/60 shadow-xs">
+            <div className="bg-[#F1F3F2]/60 rounded-2xl sm:rounded-3xl p-3 sm:p-6 border border-[#E4E7EC] shadow-xs">
               <ProjectsTab projects={projects} onToast={addToast} />
             </div>
           )}

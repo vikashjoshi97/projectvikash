@@ -195,7 +195,7 @@ export const PostModal: React.FC<PostModalProps> = ({
       {/* Main Modal Container */}
       <div
         id="post-modal-content"
-        className="relative w-full max-w-5xl max-h-[94vh] bg-white rounded-2xl overflow-hidden shadow-2xl flex flex-col md:flex-row animate-in zoom-in-95 duration-200"
+        className="relative w-full max-w-5xl max-h-[94vh] bg-white rounded-2xl overflow-hidden shadow-2xl border border-[#E4E7EC] flex flex-col md:flex-row animate-in zoom-in-95 duration-200"
       >
         {/* ================= LEFT / MEDIA VIEWER ================= */}
         <div className="w-full md:w-[58%] bg-neutral-950 flex items-center justify-center relative min-h-[320px] md:min-h-[540px] overflow-hidden">
@@ -258,24 +258,24 @@ export const PostModal: React.FC<PostModalProps> = ({
         {/* ================= RIGHT / DETAILS & COMMENTS ================= */}
         <div className="w-full md:w-[42%] flex flex-col justify-between bg-white h-auto md:h-full max-h-[50vh] md:max-h-[85vh]">
           {/* Header */}
-          <div className="p-3.5 sm:p-4 border-b border-slate-100 flex items-center justify-between shrink-0">
+          <div className="p-3.5 sm:p-4 border-b border-[#E4E7EC] flex items-center justify-between shrink-0">
             <div className="flex items-center gap-2.5">
               <img
                 src={profile.avatar}
                 alt={profile.name}
-                className="w-8 h-8 sm:w-9 sm:h-9 rounded-full object-cover border border-slate-200"
+                className="w-8 h-8 sm:w-9 sm:h-9 rounded-full object-cover border border-[#E4E7EC]"
               />
               <div className="flex flex-col">
                 <div className="flex items-center gap-1">
-                  <span className="font-bold text-xs sm:text-sm text-neutral-900 leading-tight">
+                  <span className="font-bold text-xs sm:text-sm text-[#173B57] leading-tight">
                     {profile.username}
                   </span>
                   {profile.verified && (
-                    <BadgeCheck className="w-3.5 h-3.5 text-[#4F46E5] fill-[#4F46E5]/20" />
+                    <BadgeCheck className="w-3.5 h-3.5 text-[#2F7D78] fill-[#2F7D78]/20" />
                   )}
                 </div>
                 {post.location && (
-                  <span className="text-[11px] text-neutral-500 flex items-center gap-0.5">
+                  <span className="text-[11px] text-[#667085] flex items-center gap-0.5">
                     <MapPin className="w-2.5 h-2.5" />
                     {post.location}
                   </span>
@@ -286,7 +286,7 @@ export const PostModal: React.FC<PostModalProps> = ({
             <button
               type="button"
               onClick={() => onShare(post)}
-              className="p-1.5 text-neutral-400 hover:text-neutral-700 transition-colors"
+              className="p-1.5 text-[#667085] hover:text-[#173B57] transition-colors"
               title="Share post"
             >
               <MoreHorizontal className="w-4 h-4" />
@@ -300,11 +300,11 @@ export const PostModal: React.FC<PostModalProps> = ({
               <img
                 src={profile.avatar}
                 alt={profile.name}
-                className="w-7 h-7 sm:w-8 sm:h-8 rounded-full object-cover border border-slate-200 shrink-0 mt-0.5"
+                className="w-7 h-7 sm:w-8 sm:h-8 rounded-full object-cover border border-[#E4E7EC] shrink-0 mt-0.5"
               />
               <div className="flex-1 space-y-1">
-                <p className="text-neutral-800 leading-relaxed text-xs sm:text-sm">
-                  <span className="font-bold text-neutral-900 mr-2">
+                <p className="text-[#172033] leading-relaxed text-xs sm:text-sm">
+                  <span className="font-bold text-[#173B57] mr-2">
                     {profile.username}
                   </span>
                   {post.caption}
@@ -316,7 +316,7 @@ export const PostModal: React.FC<PostModalProps> = ({
                     {post.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="text-xs text-[#4F46E5] font-medium hover:underline cursor-pointer"
+                        className="text-xs text-[#2F7D78] font-medium hover:underline cursor-pointer"
                       >
                         #{tag}
                       </span>
@@ -324,29 +324,29 @@ export const PostModal: React.FC<PostModalProps> = ({
                   </div>
                 )}
 
-                <div className="text-[11px] text-neutral-400 pt-0.5">
+                <div className="text-[11px] text-[#667085] pt-0.5">
                   {post.date}
                 </div>
               </div>
             </div>
 
-            <div className="border-t border-slate-100 my-2" />
+            <div className="border-t border-[#E4E7EC] my-2" />
 
             {/* Comment List */}
             {post.comments && post.comments.length > 0 ? (
               post.comments.map((comment) => (
                 <div key={comment.id} className="flex items-start gap-2.5 group">
-                  <div className="w-7 h-7 rounded-full bg-slate-200 text-slate-700 font-bold text-[11px] flex items-center justify-center shrink-0">
+                  <div className="w-7 h-7 rounded-full bg-[#F1F3F2] text-[#173B57] font-bold text-[11px] flex items-center justify-center shrink-0 border border-[#E4E7EC]">
                     {comment.username.slice(0, 2).toUpperCase()}
                   </div>
                   <div className="flex-1">
-                    <p className="text-neutral-800 text-xs sm:text-sm">
-                      <span className="font-bold text-neutral-900 mr-1.5">
+                    <p className="text-[#172033] text-xs sm:text-sm">
+                      <span className="font-bold text-[#173B57] mr-1.5">
                         {comment.username}
                       </span>
                       {comment.content}
                     </p>
-                    <div className="flex items-center gap-3 text-[11px] text-neutral-400 mt-1">
+                    <div className="flex items-center gap-3 text-[11px] text-[#667085] mt-1">
                       <span>{comment.timestamp}</span>
                       <span>{comment.likes || 0} likes</span>
                       <button
@@ -355,7 +355,7 @@ export const PostModal: React.FC<PostModalProps> = ({
                           setCommentInput(`@${comment.username} `);
                           inputRef.current?.focus();
                         }}
-                        className="font-semibold text-neutral-500 hover:text-neutral-800"
+                        className="font-semibold text-[#667085] hover:text-[#173B57]"
                       >
                         Reply
                       </button>
@@ -364,7 +364,7 @@ export const PostModal: React.FC<PostModalProps> = ({
                 </div>
               ))
             ) : (
-              <div className="py-4 text-center text-xs text-neutral-400">
+              <div className="py-4 text-center text-xs text-[#667085]">
                 No comments yet. Be the first to start the conversation!
               </div>
             )}
@@ -372,7 +372,7 @@ export const PostModal: React.FC<PostModalProps> = ({
           </div>
 
           {/* Footer Actions & Add Comment */}
-          <div className="border-t border-slate-100 p-3.5 sm:p-4 space-y-2.5 shrink-0 bg-slate-50/60">
+          <div className="border-t border-[#E4E7EC] p-3.5 sm:p-4 space-y-2.5 shrink-0 bg-[#F7F7F5]">
             {/* Interactive buttons */}
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3.5 sm:gap-4">
@@ -386,14 +386,14 @@ export const PostModal: React.FC<PostModalProps> = ({
                     className={`w-5 h-5 sm:w-6 sm:h-6 transition-colors ${
                       post.isLiked
                         ? 'fill-rose-500 text-rose-500'
-                        : 'text-neutral-700 hover:text-rose-500'
+                        : 'text-[#173B57] hover:text-rose-500'
                     }`}
                   />
                 </button>
                 <button
                   type="button"
                   onClick={() => inputRef.current?.focus()}
-                  className="text-neutral-700 hover:text-neutral-900 transition-colors cursor-pointer"
+                  className="text-[#173B57] hover:text-[#2F7D78] transition-colors cursor-pointer"
                   aria-label="Comment"
                 >
                   <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -401,7 +401,7 @@ export const PostModal: React.FC<PostModalProps> = ({
                 <button
                   type="button"
                   onClick={() => onShare(post)}
-                  className="text-neutral-700 hover:text-neutral-900 transition-colors cursor-pointer"
+                  className="text-[#173B57] hover:text-[#2F7D78] transition-colors cursor-pointer"
                   aria-label="Share post"
                 >
                   <Share2 className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -411,12 +411,12 @@ export const PostModal: React.FC<PostModalProps> = ({
               <button
                 type="button"
                 onClick={() => setIsSaved(!isSaved)}
-                className="text-neutral-700 hover:text-neutral-900 transition-colors cursor-pointer"
+                className="text-[#173B57] hover:text-[#2F7D78] transition-colors cursor-pointer"
                 aria-label="Save post"
               >
                 <Bookmark
                   className={`w-5 h-5 sm:w-6 sm:h-6 ${
-                    isSaved ? 'fill-neutral-900 text-neutral-900' : ''
+                    isSaved ? 'fill-[#173B57] text-[#173B57]' : ''
                   }`}
                 />
               </button>
@@ -424,10 +424,10 @@ export const PostModal: React.FC<PostModalProps> = ({
 
             {/* Likes count & Date */}
             <div>
-              <p className="font-bold text-xs sm:text-sm text-neutral-900">
+              <p className="font-bold text-xs sm:text-sm text-[#173B57]">
                 {post.likes} {post.likes === 1 ? 'like' : 'likes'}
               </p>
-              <p className="text-[10px] sm:text-xs text-neutral-400 uppercase tracking-wide mt-0.5">
+              <p className="text-[10px] sm:text-xs text-[#667085] uppercase tracking-wide mt-0.5">
                 {post.date}
               </p>
             </div>
@@ -435,21 +435,21 @@ export const PostModal: React.FC<PostModalProps> = ({
             {/* Comment Input Box */}
             <form
               onSubmit={handleSubmitComment}
-              className="flex items-center gap-2 pt-2 border-t border-slate-200/60"
+              className="flex items-center gap-2 pt-2 border-t border-[#E4E7EC]"
             >
-              <Smile className="w-4 h-4 text-neutral-400 shrink-0" />
+              <Smile className="w-4 h-4 text-[#667085] shrink-0" />
               <input
                 ref={inputRef}
                 type="text"
                 placeholder="Add a comment..."
                 value={commentInput}
                 onChange={(e) => setCommentInput(e.target.value)}
-                className="w-full bg-transparent border-none text-xs sm:text-sm text-neutral-800 placeholder:text-neutral-400 focus:outline-none"
+                className="w-full bg-transparent border-none text-xs sm:text-sm text-[#172033] placeholder:text-[#667085] focus:outline-none"
               />
               <button
                 type="submit"
                 disabled={!commentInput.trim()}
-                className="text-xs sm:text-sm font-semibold text-[#4F46E5] hover:text-[#4338CA] disabled:opacity-40 flex items-center gap-1 transition-opacity cursor-pointer"
+                className="text-xs sm:text-sm font-semibold text-[#173B57] hover:text-[#2F7D78] disabled:opacity-40 flex items-center gap-1 transition-opacity cursor-pointer"
               >
                 <span>Post</span>
                 <Send className="w-3 h-3" />

@@ -17,7 +17,7 @@ export const BottomNav: React.FC<BottomNavProps> = ({
     <nav
       id="mobile-bottom-nav"
       aria-label="Mobile Navigation"
-      className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-white/95 backdrop-blur-lg border-t border-slate-200/90 shadow-[0_-4px_20px_rgba(0,0,0,0.05)] px-3 py-1.5 safe-area-pb"
+      className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-white/95 backdrop-blur-lg border-t border-[#E4E7EC] shadow-[0_-4px_20px_rgba(16,24,40,0.06)] px-3 py-1.5 safe-area-pb"
     >
       <div className="max-w-md mx-auto flex items-center justify-around">
         {/* 1. Home */}
@@ -30,12 +30,12 @@ export const BottomNav: React.FC<BottomNavProps> = ({
           }}
           className={`flex flex-col items-center justify-center py-1 px-2.5 rounded-xl transition-all duration-150 min-w-[56px] ${
             activeTab === 'posts'
-              ? 'text-[#4F46E5]'
-              : 'text-[#64748B] hover:text-[#111827]'
+              ? 'text-[#173B57]'
+              : 'text-[#667085] hover:text-[#173B57]'
           }`}
           aria-label="Home"
         >
-          <Home className="w-5 h-5 mb-0.5 transition-transform active:scale-90" />
+          <Home className={`w-5 h-5 mb-0.5 transition-transform active:scale-90 ${activeTab === 'posts' ? 'text-[#2F7D78]' : 'text-[#667085]'}`} />
           <span className="text-[10px] font-semibold tracking-tight">Home</span>
         </button>
 
@@ -52,12 +52,12 @@ export const BottomNav: React.FC<BottomNavProps> = ({
           }}
           className={`flex flex-col items-center justify-center py-1 px-2.5 rounded-xl transition-all duration-150 min-w-[56px] ${
             activeTab === 'posts'
-              ? 'text-[#4F46E5]'
-              : 'text-[#64748B] hover:text-[#111827]'
+              ? 'text-[#173B57]'
+              : 'text-[#667085] hover:text-[#173B57]'
           }`}
           aria-label="Posts"
         >
-          <Grid className="w-5 h-5 mb-0.5 transition-transform active:scale-90" />
+          <Grid className={`w-5 h-5 mb-0.5 transition-transform active:scale-90 ${activeTab === 'posts' ? 'text-[#2F7D78]' : 'text-[#667085]'}`} />
           <span className="text-[10px] font-semibold tracking-tight">Posts</span>
         </button>
 
@@ -71,12 +71,12 @@ export const BottomNav: React.FC<BottomNavProps> = ({
           }}
           className={`flex flex-col items-center justify-center py-1 px-2.5 rounded-xl transition-all duration-150 min-w-[56px] ${
             activeTab === 'projects'
-              ? 'text-[#4F46E5]'
-              : 'text-[#64748B] hover:text-[#111827]'
+              ? 'text-[#173B57]'
+              : 'text-[#667085] hover:text-[#173B57]'
           }`}
           aria-label="Projects"
         >
-          <FolderKanban className="w-5 h-5 mb-0.5 transition-transform active:scale-90" />
+          <FolderKanban className={`w-5 h-5 mb-0.5 transition-transform active:scale-90 ${activeTab === 'projects' ? 'text-[#2F7D78]' : 'text-[#667085]'}`} />
           <span className="text-[10px] font-semibold tracking-tight">Projects</span>
         </button>
 
@@ -90,12 +90,12 @@ export const BottomNav: React.FC<BottomNavProps> = ({
           }}
           className={`flex flex-col items-center justify-center py-1 px-2.5 rounded-xl transition-all duration-150 min-w-[56px] ${
             activeTab === 'about'
-              ? 'text-[#4F46E5]'
-              : 'text-[#64748B] hover:text-[#111827]'
+              ? 'text-[#173B57]'
+              : 'text-[#667085] hover:text-[#173B57]'
           }`}
           aria-label="About"
         >
-          <User className="w-5 h-5 mb-0.5 transition-transform active:scale-90" />
+          <User className={`w-5 h-5 mb-0.5 transition-transform active:scale-90 ${activeTab === 'about' ? 'text-[#2F7D78]' : 'text-[#667085]'}`} />
           <span className="text-[10px] font-semibold tracking-tight">About</span>
         </button>
 
@@ -104,7 +104,7 @@ export const BottomNav: React.FC<BottomNavProps> = ({
           type="button"
           id="mobile-nav-contact"
           onClick={onOpenContact}
-          className="flex flex-col items-center justify-center py-1 px-2.5 rounded-xl transition-all duration-150 text-[#64748B] hover:text-[#4F46E5] min-w-[56px]"
+          className="flex flex-col items-center justify-center py-1 px-2.5 rounded-xl transition-all duration-150 text-[#667085] hover:text-[#173B57] min-w-[56px]"
           aria-label="Contact"
         >
           <MessageCircle className="w-5 h-5 mb-0.5 transition-transform active:scale-90" />
