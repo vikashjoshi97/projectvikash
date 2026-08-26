@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <defs>
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="60%" stop-color="#475569" />
+      <stop offset="100%" stop-color="#94a3b8" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="600" fill="url(#skyGrad)" />
+  
+  <!-- Architectural Silhouette & Perspective -->
+  <polygon points="60,600 140,240 220,240 260,600" fill="#0f172a" />
+  <polygon points="220,240 320,140 380,140 420,600 260,600" fill="#1e293b" />
+  <polygon points="380,140 480,80 540,80 560,600 420,600" fill="#020617" />
+  
+  <!-- Facade windows/reflections -->
+  <g fill="#94a3b8" opacity="0.3">
+    <rect x="240" y="260" width="15" height="25" />
+    <rect x="270" y="260" width="15" height="25" />
+    <rect x="240" y="300" width="15" height="25" />
+    <rect x="270" y="300" width="15" height="25" />
+    <rect x="240" y="340" width="15" height="25" />
+    <rect x="270" y="340" width="15" height="25" />
+    
+    <rect x="400" y="160" width="20" height="30" fill="#f8fafc" opacity="0.6"/>
+    <rect x="440" y="160" width="20" height="30" fill="#f8fafc" opacity="0.6"/>
+    <rect x="400" y="210" width="20" height="30" />
+    <rect x="440" y="210" width="20" height="30" />
+  </g>
+
+  <!-- Golden Sun / Ray reflection -->
+  <circle cx="480" cy="80" r="10" fill="#fef08a" opacity="0.8"/>
+
+  <!-- Minimal text annotation -->
+  <rect x="60" y="60" width="150" height="32" rx="6" fill="#0f172a" fill-opacity="0.8" />
+  <text x="135" y="81" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600" fill="#f8fafc" letter-spacing="2">ARCH &bull; PERSPECTIVE</text>
+</svg>

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <defs>
+    <linearGradient id="p9Bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#18181b" />
+      <stop offset="100%" stop-color="#27272a" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="600" fill="url(#p9Bg)" />
+  
+  <!-- Token Matrix Rows -->
+  <g transform="translate(60, 80)">
+    <rect x="0" y="0" width="480" height="60" rx="10" fill="#09090b" stroke="#3f3f46" stroke-width="1"/>
+    <rect x="20" y="15" width="30" height="30" rx="6" fill="#3b82f6" />
+    <text x="65" y="32" font-family="monospace" font-size="13" font-weight="600" fill="#fafafa">color.brand.primary</text>
+    <text x="65" y="48" font-family="monospace" font-size="11" fill="#a1a1aa">#3b82f6 &bull; rgb(59, 130, 246)</text>
+    <rect x="390" y="18" width="70" height="24" rx="12" fill="#27272a" />
+    <text x="425" y="34" text-anchor="middle" font-family="monospace" font-size="10" fill="#60a5fa">CORE</text>
+
+    <rect x="0" y="80" width="480" height="60" rx="10" fill="#09090b" stroke="#3f3f46" stroke-width="1"/>
+    <rect x="20" y="95" width="30" height="30" rx="6" fill="#10b981" />
+    <text x="65" y="112" font-family="monospace" font-size="13" font-weight="600" fill="#fafafa">color.status.success</text>
+    <text x="65" y="128" font-family="monospace" font-size="11" fill="#a1a1aa">#10b981 &bull; rgb(16, 185, 129)</text>
+    <rect x="390" y="98" width="70" height="24" rx="12" fill="#27272a" />
+    <text x="425" y="114" text-anchor="middle" font-family="monospace" font-size="10" fill="#34d399">STATUS</text>
+
+    <rect x="0" y="160" width="480" height="60" rx="10" fill="#09090b" stroke="#3f3f46" stroke-width="1"/>
+    <rect x="20" y="175" width="30" height="30" rx="6" fill="#f59e0b" />
+    <text x="65" y="192" font-family="monospace" font-size="13" font-weight="600" fill="#fafafa">color.status.warning</text>
+    <text x="65" y="208" font-family="monospace" font-size="11" fill="#a1a1aa">#f59e0b &bull; rgb(245, 158, 11)</text>
+    <rect x="390" y="178" width="70" height="24" rx="12" fill="#27272a" />
+    <text x="425" y="194" text-anchor="middle" font-family="monospace" font-size="10" fill="#fbbf24">STATUS</text>
+
+    <rect x="0" y="240" width="480" height="60" rx="10" fill="#09090b" stroke="#3f3f46" stroke-width="1"/>
+    <rect x="20" y="255" width="30" height="30" rx="6" fill="#6366f1" />
+    <text x="65" y="272" font-family="monospace" font-size="13" font-weight="600" fill="#fafafa">space.inset.md</text>
+    <text x="65" y="288" font-family="monospace" font-size="11" fill="#a1a1aa">16px &bull; 1.0rem &bull; base step</text>
+    <rect x="390" y="258" width="70" height="24" rx="12" fill="#27272a" />
+    <text x="425" y="274" text-anchor="middle" font-family="monospace" font-size="10" fill="#a5b4fc">SPACING</text>
+  </g>
+
+  <text x="60" y="440" font-family="'Plus Jakarta Sans', sans-serif" font-size="20" font-weight="700" fill="#fafafa">Design Tokens Architecture</text>
+  <text x="60" y="465" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="400" fill="#a1a1aa">Single source of truth across iOS, Android, and Web clients</text>
+</svg>

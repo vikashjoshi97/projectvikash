@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <rect width="800" height="500" fill="#fafaf9" />
+  
+  <!-- Palette visualizer showcase -->
+  <g transform="translate(80, 70)">
+    <!-- Palette Strip 1 -->
+    <text x="0" y="30" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="700" fill="#1c1917">OKLCH Neutral Slate (0.02 Chroma)</text>
+    <rect x="0" y="45" width="64" height="60" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+    <rect x="70" y="45" width="64" height="60" rx="6" fill="#f1f5f9" />
+    <rect x="140" y="45" width="64" height="60" rx="6" fill="#e2e8f0" />
+    <rect x="210" y="45" width="64" height="60" rx="6" fill="#cbd5e1" />
+    <rect x="280" y="45" width="64" height="60" rx="6" fill="#94a3b8" />
+    <rect x="350" y="45" width="64" height="60" rx="6" fill="#64748b" />
+    <rect x="420" y="45" width="64" height="60" rx="6" fill="#475569" />
+    <rect x="490" y="45" width="64" height="60" rx="6" fill="#334155" />
+    <rect x="560" y="45" width="64" height="60" rx="6" fill="#1e293b" />
+    <rect x="630" y="45" width="64" height="60" rx="6" fill="#0f172a" />
+
+    <!-- Palette Strip 2: Accent Indigo -->
+    <text x="0" y="150" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="700" fill="#1c1917">OKLCH Electric Indigo (0.18 Chroma)</text>
+    <rect x="0" y="165" width="64" height="60" rx="6" fill="#eef2ff" stroke="#e0e7ff"/>
+    <rect x="70" y="165" width="64" height="60" rx="6" fill="#e0e7ff" />
+    <rect x="140" y="165" width="64" height="60" rx="6" fill="#c7d2fe" />
+    <rect x="210" y="165" width="64" height="60" rx="6" fill="#a5b4fc" />
+    <rect x="280" y="165" width="64" height="60" rx="6" fill="#818cf8" />
+    <rect x="350" y="165" width="64" height="60" rx="6" fill="#6366f1" />
+    <rect x="420" y="165" width="64" height="60" rx="6" fill="#4f46e5" />
+    <rect x="490" y="165" width="64" height="60" rx="6" fill="#4338ca" />
+    <rect x="560" y="165" width="64" height="60" rx="6" fill="#3730a3" />
+    <rect x="630" y="165" width="64" height="60" rx="6" fill="#312e81" />
+
+    <!-- Spectrum Curve Preview -->
+    <rect x="0" y="250" width="694" height="90" rx="10" fill="#1c1917" />
+    <text x="30" y="295" font-family="monospace" font-size="13" fill="#38bdf8">kroma export --format=tailwind --space=oklch</text>
+    <text x="30" y="320" font-family="monospace" font-size="11" fill="#a8a29e">✓ 10 harmonic steps generated with mathematically uniform deltaE</text>
+  </g>
+</svg>

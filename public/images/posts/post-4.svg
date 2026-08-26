@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <rect width="600" height="600" fill="#f8fafc" />
+  
+  <!-- Editorial Typography composition -->
+  <g stroke="#e2e8f0" stroke-width="1">
+    <line x1="50" y1="50" x2="550" y2="50" />
+    <line x1="50" y1="550" x2="550" y2="550" />
+    <line x1="50" y1="50" x2="50" y2="550" />
+    <line x1="550" y1="50" x2="550" y2="550" />
+  </g>
+
+  <!-- Giant typographic letterform "V" and "J" -->
+  <text x="80" y="320" font-family="'Georgia', serif" font-size="240" font-weight="900" fill="#0f172a" opacity="0.95">V</text>
+  <text x="240" y="380" font-family="'Georgia', serif" font-size="240" font-weight="400" font-style="italic" fill="#64748b" opacity="0.7">J</text>
+
+  <!-- Typography guides & annotations -->
+  <line x1="50" y1="180" x2="550" y2="180" stroke="#ef4444" stroke-width="1" stroke-dasharray="4 4" opacity="0.7"/>
+  <text x="490" y="175" font-family="monospace" font-size="10" fill="#ef4444">cap-height</text>
+
+  <line x1="50" y1="320" x2="550" y2="320" stroke="#3b82f6" stroke-width="1" stroke-dasharray="4 4" opacity="0.7"/>
+  <text x="500" y="315" font-family="monospace" font-size="10" fill="#3b82f6">baseline</text>
+
+  <line x1="50" y1="410" x2="550" y2="410" stroke="#10b981" stroke-width="1" stroke-dasharray="4 4" opacity="0.7"/>
+  <text x="495" y="405" font-family="monospace" font-size="10" fill="#10b981">descender</text>
+
+  <text x="80" y="490" font-family="'Plus Jakarta Sans', sans-serif" font-size="24" font-weight="700" fill="#0f172a">Typographic Cadence</text>
+  <text x="80" y="520" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="500" fill="#64748b">Exploring optical kerning and variable serif weight curves.</text>
+</svg>

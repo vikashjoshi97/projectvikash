@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <defs>
+    <linearGradient id="p2Bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#18181b" />
+      <stop offset="100%" stop-color="#27272a" />
+    </linearGradient>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#818cf8" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="600" fill="url(#p2Bg)" />
+  
+  <!-- Isometric Grid / Architecture Representation -->
+  <g transform="translate(300, 300) scale(1.1)">
+    <!-- Main Box -->
+    <path d="M 0 -120 L 140 -40 L 0 40 L -140 -40 Z" fill="#27272a" stroke="#52525b" stroke-width="1.5"/>
+    <path d="M -140 -40 L 0 40 L 0 160 L -140 80 Z" fill="#18181b" stroke="#3f3f46" stroke-width="1.5"/>
+    <path d="M 140 -40 L 0 40 L 0 160 L 140 80 Z" fill="#09090b" stroke="#3f3f46" stroke-width="1.5"/>
+    
+    <!-- Top inner floating plane -->
+    <path d="M 0 -150 L 100 -90 L 0 -30 L -100 -90 Z" fill="#3f3f46" fill-opacity="0.5" stroke="#71717a" stroke-width="1.5" stroke-dasharray="3 3"/>
+    
+    <!-- Connected nodes -->
+    <circle cx="0" cy="-150" r="5" fill="#fafafa" />
+    <circle cx="100" cy="-90" r="5" fill="#fafafa" />
+    <circle cx="-100" cy="-90" r="5" fill="#fafafa" />
+    <circle cx="0" cy="-30" r="5" fill="#fafafa" />
+  </g>
+
+  <!-- Title Badge -->
+  <rect x="80" y="80" width="180" height="36" rx="18" fill="#09090b" stroke="#3f3f46" stroke-width="1" />
+  <circle cx="102" cy="98" r="4" fill="#10b981" />
+  <text x="116" y="103" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="600" fill="#e4e4e7" letter-spacing="1">SYSTEM ARCH 02</text>
+  
+  <text x="80" y="520" font-family="'Plus Jakarta Sans', sans-serif" font-size="20" font-weight="700" fill="#fafafa">Modular Component Engine</text>
+  <text x="80" y="545" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="400" fill="#a1a1aa">Decoupled state machines and zero runtime overhead</text>
+</svg>

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <defs>
+    <linearGradient id="curveGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="50%" stop-color="#818cf8" />
+      <stop offset="100%" stop-color="#ec4899" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="600" fill="#09090b" />
+  
+  <!-- Motion Grid & Physics Curve Visualization -->
+  <g stroke="#27272a" stroke-width="1">
+    <line x1="100" y1="100" x2="500" y2="100" />
+    <line x1="100" y1="200" x2="500" y2="200" />
+    <line x1="100" y1="300" x2="500" y2="300" />
+    <line x1="100" y1="400" x2="500" y2="400" />
+    <line x1="100" y1="100" x2="100" y2="400" />
+    <line x1="200" y1="100" x2="200" y2="400" />
+    <line x1="300" y1="100" x2="300" y2="400" />
+    <line x1="400" y1="100" x2="400" y2="400" />
+    <line x1="500" y1="100" x2="500" y2="400" />
+  </g>
+
+  <!-- Bezier Spring Curves -->
+  <path d="M 100 400 C 180 400, 220 120, 320 170 C 380 200, 420 195, 500 200" fill="none" stroke="url(#curveGrad)" stroke-width="4" stroke-linecap="round"/>
+  <path d="M 100 400 C 240 400, 300 200, 500 200" fill="none" stroke="#71717a" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.6"/>
+
+  <!-- Keyframe points -->
+  <circle cx="100" cy="400" r="6" fill="#38bdf8" />
+  <circle cx="320" cy="170" r="7" fill="#818cf8" stroke="#ffffff" stroke-width="2"/>
+  <circle cx="500" cy="200" r="6" fill="#ec4899" />
+
+  <text x="100" y="470" font-family="'Plus Jakarta Sans', sans-serif" font-size="20" font-weight="700" fill="#fafafa">Physics-Based Spring Curves</text>
+  <text x="100" y="500" font-family="monospace" font-size="12" fill="#a1a1aa">stiffness: 260 &bull; damping: 20 &bull; mass: 0.8</text>
+</svg>

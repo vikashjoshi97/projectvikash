@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <rect width="800" height="500" fill="#0b0f19" />
+  
+  <!-- Analytics Dashboard UI -->
+  <g transform="translate(60, 50)">
+    <rect x="0" y="0" width="680" height="400" rx="12" fill="#111827" stroke="#1f2937" stroke-width="1.5"/>
+    
+    <!-- Top metrics cards -->
+    <rect x="30" y="30" width="190" height="85" rx="8" fill="#1f2937" />
+    <text x="50" y="55" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="#9ca3af">THROUGHPUT</text>
+    <text x="50" y="85" font-family="'Plus Jakarta Sans', sans-serif" font-size="22" font-weight="700" fill="#f9fafb">14,290 req/s</text>
+    <text x="50" y="102" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="#34d399">▲ +18.4% vs last hr</text>
+
+    <rect x="245" y="30" width="190" height="85" rx="8" fill="#1f2937" />
+    <text x="265" y="55" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="#9ca3af">AVG LATENCY</text>
+    <text x="265" y="85" font-family="'Plus Jakarta Sans', sans-serif" font-size="22" font-weight="700" fill="#f9fafb">12.4 ms</text>
+    <text x="265" y="102" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="#60a5fa">p99 = 28ms</text>
+
+    <rect x="460" y="30" width="190" height="85" rx="8" fill="#1f2937" />
+    <text x="480" y="55" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="#9ca3af">HEALTH SCORE</text>
+    <text x="480" y="85" font-family="'Plus Jakarta Sans', sans-serif" font-size="22" font-weight="700" fill="#34d399">99.98%</text>
+    <text x="480" y="102" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="#9ca3af">All 14 regions green</text>
+
+    <!-- Main Line Chart Area -->
+    <rect x="30" y="140" width="620" height="225" rx="8" fill="#151e2e" stroke="#1f2937" stroke-width="1"/>
+    
+    <!-- Chart grid lines -->
+    <line x1="60" y1="180" x2="620" y2="180" stroke="#1f2937" stroke-width="1" stroke-dasharray="3 3"/>
+    <line x1="60" y1="230" x2="620" y2="230" stroke="#1f2937" stroke-width="1" stroke-dasharray="3 3"/>
+    <line x1="60" y1="280" x2="620" y2="280" stroke="#1f2937" stroke-width="1" stroke-dasharray="3 3"/>
+    <line x1="60" y1="330" x2="620" y2="330" stroke="#374151" stroke-width="1"/>
+
+    <!-- Chart Path -->
+    <path d="M 60 310 Q 140 300 200 240 T 340 210 T 480 170 T 620 160" fill="none" stroke="#38bdf8" stroke-width="3"/>
+    <path d="M 60 310 Q 140 300 200 240 T 340 210 T 480 170 T 620 160 L 620 330 L 60 330 Z" fill="#38bdf8" fill-opacity="0.15"/>
+    
+    <!-- Data points -->
+    <circle cx="200" cy="240" r="4" fill="#38bdf8" />
+    <circle cx="340" cy="210" r="4" fill="#38bdf8" />
+    <circle cx="480" cy="170" r="4" fill="#38bdf8" />
+    <circle cx="620" cy="160" r="5" fill="#f8fafc" stroke="#38bdf8" stroke-width="2"/>
+  </g>
+</svg>
