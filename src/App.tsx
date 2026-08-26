@@ -17,6 +17,7 @@ import { ShareModal } from './components/ShareModal';
 import { EditProfileModal } from './components/EditProfileModal';
 import { Toast, ToastMessage } from './components/Toast';
 import { Footer } from './components/Footer';
+import { BottomNav } from './components/BottomNav';
 
 export default function App() {
   const [profile, setProfile] = useState<ProfileData>(initialProfileData);
@@ -144,12 +145,17 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F6F8FC] flex flex-col text-[#111827] font-sans selection:bg-[#4F46E5] selection:text-white relative overflow-x-hidden">
-      {/* Subtle Background Ambience Glows */}
+    <div className="min-h-screen bg-[#F7F9FC] flex flex-col text-[#111827] font-sans selection:bg-[#4F46E5] selection:text-white relative overflow-x-hidden">
+      {/* Subtle Premium Multi-layer Background Ambient Glows (Blue, Indigo, Purple, Cyan, Peach) */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-gradient-to-b from-[#4F46E5]/6 via-[#06B6D4]/4 to-transparent blur-3xl rounded-full" />
-        <div className="absolute top-[30%] -left-32 w-96 h-96 bg-[#4F46E5]/3 blur-3xl rounded-full" />
-        <div className="absolute top-[60%] -right-32 w-96 h-96 bg-[#06B6D4]/3 blur-3xl rounded-full" />
+        {/* Top Indigo / Blue glow */}
+        <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[800px] h-[550px] bg-gradient-to-b from-[#4F46E5]/6 via-[#3B82F6]/4 to-transparent blur-3xl rounded-full" />
+        {/* Mid-Left Soft Purple glow */}
+        <div className="absolute top-[25%] -left-36 w-[420px] h-[420px] bg-[#8B5CF6]/3 blur-3xl rounded-full" />
+        {/* Mid-Right Soft Cyan glow */}
+        <div className="absolute top-[48%] -right-36 w-[450px] h-[450px] bg-[#06B6D4]/3 blur-3xl rounded-full" />
+        {/* Lower-Left Soft Peach glow */}
+        <div className="absolute top-[72%] -left-28 w-[400px] h-[400px] bg-[#FB923C]/3 blur-3xl rounded-full" />
       </div>
 
       {/* Top Navbar */}
@@ -162,7 +168,7 @@ export default function App() {
       />
 
       {/* Main Container */}
-      <main className="relative z-10 flex-1 w-full max-w-5xl mx-auto pb-12">
+      <main className="relative z-10 flex-1 w-full max-w-5xl mx-auto pb-24 md:pb-12">
         {/* Profile Header (Photo, Details, Stats, Actions) */}
         <ProfileHeader
           profile={profile}
@@ -187,7 +193,7 @@ export default function App() {
 
         {/* Tab Content Wrappers with Harmonious Sectional Backgrounds */}
         <div className="transition-all duration-300">
-          {/* Tab 1: 3-Column Content Grid */}
+          {/* Tab 1: Content Grid */}
           {activeTab === 'posts' && (
             <div className="bg-[#F8FAFC]/70 rounded-2xl sm:rounded-3xl p-3 sm:p-6 border border-slate-200/50 shadow-xs">
               <PostsGrid posts={posts} onSelectPost={setSelectedPost} />
@@ -214,6 +220,13 @@ export default function App() {
           )}
         </div>
       </main>
+
+      {/* Mobile Bottom Navigation Bar (Fixed on mobile, hidden on desktop) */}
+      <BottomNav
+        activeTab={activeTab}
+        onTabChange={setActiveTab}
+        onOpenContact={() => setIsMessageOpen(true)}
+      />
 
       {/* Post Detail Modal */}
       {selectedPost && (

@@ -12,7 +12,7 @@ export const initialProfileData: ProfileData = {
   username: 'vikashjoshi',
   handle: '@vikashjoshi',
   pronouns: 'he/him',
-  avatar: '/images/profile/avatar.svg',
+  avatar: '/images/profile/profile-placeholder.jpg',
   category: 'Creator & Technologist',
   bio: 'Building purposeful digital products, modern user experiences, and visual architectures. Sharing craft, process, and creative explorations.',
   location: 'San Francisco, CA',

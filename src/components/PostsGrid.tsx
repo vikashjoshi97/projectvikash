@@ -1,6 +1,6 @@
 import React from 'react';
 import { PostItem } from '../types';
-import { Heart, MessageCircle, Eye, Layers } from 'lucide-react';
+import { Heart, MessageCircle, Eye, Layers, Video } from 'lucide-react';
 
 interface PostsGridProps {
   posts: PostItem[];
@@ -19,8 +19,8 @@ export const PostsGrid: React.FC<PostsGridProps> = ({ posts, onSelectPost }) => 
 
   return (
     <div id="posts-3col-grid" className="w-full max-w-4xl mx-auto px-1 sm:px-4">
-      {/* Exact 3-column grid with clean gap */}
-      <div className="grid grid-cols-3 gap-1 sm:gap-4 md:gap-7">
+      {/* 3-column responsive grid */}
+      <div className="grid grid-cols-3 gap-1 sm:gap-4 md:gap-6">
         {posts.map((post) => (
           <button
             key={post.id}
@@ -40,6 +40,13 @@ export const PostsGrid: React.FC<PostsGridProps> = ({ posts, onSelectPost }) => 
                 (e.target as HTMLImageElement).src = '/images/posts/post-1.svg';
               }}
             />
+
+            {/* Video icon on top right if video */}
+            {(post.mediaType === 'video' || post.videoUrl) && (
+              <div className="absolute top-2 right-2 z-10 p-1 rounded-md bg-black/60 backdrop-blur-xs text-white">
+                <Video className="w-3.5 h-3.5" />
+              </div>
+            )}
 
             {/* Category / Badge pill top-left if present */}
             {post.category && (
@@ -75,3 +82,4 @@ export const PostsGrid: React.FC<PostsGridProps> = ({ posts, onSelectPost }) => 
     </div>
   );
 };
+

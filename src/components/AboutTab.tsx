@@ -4,28 +4,23 @@ import {
   ShieldCheck,
   Code2,
   TrendingUp,
+  Bot,
   GraduationCap,
-  CheckCircle2,
-  Layers,
   Sparkles,
-  Mail,
+  HeartHandshake,
+  BookOpen,
+  Award,
+  ExternalLink,
   Github,
   Linkedin,
-  Twitter,
-  MapPin,
-  Clock,
-  Globe,
-  ArrowUpRight,
-  FileCheck,
-  Bug,
-  Smartphone,
-  Send,
-  Target,
-  Search,
-  ListChecks,
+  Instagram,
+  MessageCircle,
+  Mail,
+  CheckCircle,
+  FileSpreadsheet,
+  Cpu,
   MonitorCheck,
-  Activity,
-  MessageSquare,
+  Send,
 } from 'lucide-react';
 
 interface AboutTabProps {
@@ -41,140 +36,156 @@ export const AboutTab: React.FC<AboutTabProps> = ({
   onOpenMessage,
   onToast,
 }) => {
-  const getSocialIcon = (platform: string) => {
-    switch (platform.toLowerCase()) {
-      case 'github':
-        return <Github className="w-4 h-4" />;
-      case 'twitter / x':
-      case 'twitter':
-        return <Twitter className="w-4 h-4" />;
-      case 'linkedin':
-        return <Linkedin className="w-4 h-4" />;
-      default:
-        return <Mail className="w-4 h-4" />;
-    }
-  };
-
   return (
-    <div id="about-me-page" className="w-full space-y-8 sm:space-y-10">
+    <div id="about-me-page" className="w-full max-w-4xl mx-auto space-y-6 sm:space-y-8 pb-8">
       {/* ========================================================
-          1. FULL-WIDTH HERO IMAGE BANNER (NO TEXT OVER IMAGE)
+          0. CLEAN MOBILE HEADER
           ======================================================== */}
-      <section
-        id="about-hero-banner-section"
-        aria-label="Panoramic Header Banner"
+      <div className="flex items-center justify-between px-1">
+        <div>
+          <h2 className="text-xl sm:text-2xl font-bold text-[#111827] tracking-tight">
+            About Me
+          </h2>
+          <p className="text-xs sm:text-sm text-[#64748B]">
+            परिचय, तकनीकी विशेषज्ञता एवं प्रोजेक्ट्स
+          </p>
+        </div>
+        <button
+          type="button"
+          onClick={onOpenMessage}
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#4F46E5] text-white text-xs font-semibold hover:bg-[#4338CA] transition-colors shadow-xs active:scale-95"
+        >
+          <Send className="w-3.5 h-3.5" />
+          <span>Contact</span>
+        </button>
+      </div>
+
+      {/* ========================================================
+          1. FULL-WIDTH PANORAMIC IMAGE BANNER (NO TEXT INSIDE)
+          ======================================================== */}
+      <div
+        id="about-panoramic-banner"
         className="w-full overflow-hidden rounded-2xl sm:rounded-3xl border border-slate-200/80 shadow-xs bg-slate-100"
       >
-        <div className="w-full h-[180px] sm:h-[260px] md:h-[320px] lg:h-[360px] relative">
+        <div className="w-full h-44 sm:h-64 md:h-80 lg:h-96 relative">
           <img
             src="/images/about-banner.jpg"
             alt="Scenic panoramic landscape banner"
             referrerPolicy="no-referrer"
-            className="w-full h-full object-cover object-center select-none pointer-events-none"
+            className="w-full h-full object-cover object-center select-none"
             onError={(e) => {
               (e.target as HTMLImageElement).src =
-                'https://picsum.photos/seed/himalayan-vista/1920/600';
+                'https://picsum.photos/seed/nature-landscape/1600/600';
             }}
           />
         </div>
-      </section>
+      </div>
 
       {/* ========================================================
-          2. ABOUT ME: REAL PHOTO + PERSONAL INTRODUCTION
+          2. PROFILE CARD (REAL PHOTO + INTRO + SOCIALS)
           ======================================================== */}
       <section
-        id="about-intro-section"
-        className="bg-white rounded-2xl sm:rounded-3xl border border-slate-200/80 p-6 sm:p-8 md:p-10 shadow-xs space-y-6"
+        id="about-profile-card"
+        className="bg-white rounded-2xl sm:rounded-3xl border border-slate-200/80 p-5 sm:p-8 md:p-10 shadow-xs space-y-6"
       >
         <div className="flex flex-col md:flex-row items-center md:items-start gap-6 sm:gap-8 md:gap-10">
-          {/* LEFT: Real Uploaded Photo */}
+          {/* LEFT / TOP: Real Uploaded Photo */}
           <div className="shrink-0 flex flex-col items-center">
             <div className="relative group">
               <div className="w-36 h-36 sm:w-44 sm:h-44 md:w-52 md:h-52 rounded-2xl p-[3px] bg-gradient-to-tr from-[#4F46E5] via-slate-200 to-[#06B6D4] shadow-sm transition-all duration-300 group-hover:scale-102">
                 <div className="w-full h-full rounded-2xl bg-white p-[2px] overflow-hidden">
                   <img
-                    src="/Media.PNG"
-                    alt="Vikash Joshi - QA Tester & Developer"
+                    src={profile.avatar || '/images/profile/profile-placeholder.jpg'}
+                    alt={profile.name}
                     referrerPolicy="no-referrer"
                     className="w-full h-full object-cover object-top rounded-xl"
                     onError={(e) => {
-                      // Fallback to profile avatar or SVG if needed
                       (e.target as HTMLImageElement).src =
-                        profile.avatar || '/images/profile/avatar.svg';
+                        '/images/profile/profile-placeholder.jpg';
                     }}
                   />
                 </div>
               </div>
             </div>
 
-            {/* Quick Status Tag */}
             <div className="mt-3 flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#EEF3F9] border border-slate-200/70 text-[11px] font-semibold text-[#4F46E5]">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span>Available for QA & Dev</span>
+              <span>Available for Work</span>
             </div>
           </div>
 
-          {/* RIGHT: Name, Title & Hindi Introduction */}
+          {/* RIGHT / BELOW: Name, Title, Hindi Intro & Social Links */}
           <div className="flex-1 space-y-4 text-center md:text-left">
             <div>
-              <div className="flex flex-wrap items-center justify-center md:justify-start gap-2.5">
-                <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#111827] tracking-tight">
-                  Vikash Joshi
-                </h1>
-                <span className="px-2.5 py-0.5 rounded-full bg-indigo-50 border border-indigo-200/60 text-xs font-semibold text-[#4F46E5]">
-                  MCA &amp; BCA
-                </span>
-              </div>
-              <p className="text-base sm:text-lg font-bold text-[#4F46E5] mt-1 tracking-tight">
-                QA Tester | Developer | Digital Marketing
+              <h1 className="text-2xl sm:text-3xl font-extrabold text-[#111827] tracking-tight">
+                Vikash Joshi
+              </h1>
+              <p className="text-sm sm:text-base font-semibold text-[#4F46E5] mt-0.5">
+                QA Tester | Developer | Digital Marketer
               </p>
             </div>
 
-            {/* Quick Domain Pills */}
-            <div className="flex flex-wrap items-center justify-center md:justify-start gap-1.5 pt-0.5">
-              <span className="px-2.5 py-1 rounded-lg bg-[#EEF3F9] text-[#111827] text-xs font-medium border border-slate-200/60">
-                Software QA &amp; Testing
-              </span>
-              <span className="px-2.5 py-1 rounded-lg bg-[#EEF3F9] text-[#111827] text-xs font-medium border border-slate-200/60">
-                Playwright Automation
-              </span>
-              <span className="px-2.5 py-1 rounded-lg bg-[#EEF3F9] text-[#111827] text-xs font-medium border border-slate-200/60">
-                React &amp; TypeScript
-              </span>
-              <span className="px-2.5 py-1 rounded-lg bg-[#EEF3F9] text-[#111827] text-xs font-medium border border-slate-200/60">
-                Meta Ads &amp; Marketing
-              </span>
-            </div>
-
-            {/* Hindi Bio Content */}
-            <div className="space-y-3 pt-2 text-slate-700 text-sm sm:text-base leading-relaxed text-justify md:text-left">
+            {/* Hindi Introduction */}
+            <div className="space-y-3 text-slate-700 text-sm sm:text-[15px] leading-relaxed text-justify md:text-left">
               <p>
-                नमस्ते! मैं <strong className="font-semibold text-[#111827]">विकाश जोशी (Vikash Joshi)</strong> हूँ – एक परिणाम-उन्मुख और समर्पित QA Tester, Web Developer और Digital Marketing Specialist.
+                नमस्ते, मैं <strong className="font-semibold text-[#111827]">विकास जोशी</strong> हूँ। मैं टेक्नोलॉजी और डिजिटल क्षेत्र में काम करने वाला एक बहुआयामी प्रोफेशनल हूँ। मुझे Software Testing, Web Development और Digital Marketing के क्षेत्र में काम करना पसंद है।
               </p>
               <p>
-                सॉफ़्टवेयर टेस्टिंग (Software Testing) में मेरा मुख्य फ़ोकस उच्च-गुणवत्ता वाले, बग-मुक्त और सुरक्षित डिजिटल समाधान डिलीवर करना है। मैं Manual Testing, Functional Testing, Regression Testing, Smoke &amp; Sanity Testing, UI &amp; Responsive Testing, API Testing और Bug Reporting में पूरी दक्षता के साथ काम करता हूँ। Test Case Design, Requirements Traceability Matrix (RTM) और व्यापक Test Scenarios के माध्यम से मैं हर रिलीज़ की विश्वसनीयता सुनिश्चित करता हूँ।
+                मैं QA Testing में Manual Testing, Functional Testing, Regression Testing, API Testing, Bug Reporting, Test Case Design और Test Automation पर काम करता हूँ।
               </p>
               <p>
-                वेब डेवलपमेंट में मैं React, TypeScript, JavaScript, HTML5 और CSS3 के साथ आधुनिक, तेज़ और स्केलेबल वेब ऐप्लिकेशन विकसित करता हूँ और Playwright के साथ ऑटोमेशन टेस्टिंग भी करता हूँ। डिजिटल मार्केटिंग में Meta Ads (Facebook &amp; Instagram) और WhatsApp Marketing के माध्यम से बिज़नेस ग्रोथ और कन्वर्ज़न बढ़ाने का कार्य करता हूँ।
+                इसके साथ ही मुझे Web Development और Digital Marketing में भी रुचि है और मैं अलग-अलग Digital Projects पर काम करता हूँ।
               </p>
             </div>
 
-            {/* Direct Action Buttons */}
-            <div className="pt-2 flex flex-wrap items-center justify-center md:justify-start gap-3">
-              <button
-                type="button"
-                onClick={onOpenMessage}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#4F46E5] hover:bg-[#4338CA] text-white text-xs sm:text-sm font-semibold transition-all shadow-xs active:scale-95"
-              >
-                <Send className="w-4 h-4" />
-                <span>Get In Touch / Contact</span>
-              </button>
+            {/* Social Buttons */}
+            <div className="pt-2 flex flex-wrap items-center justify-center md:justify-start gap-2.5">
+              {/* LinkedIn */}
               <a
-                href={`mailto:${about.email}`}
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#EEF3F9] hover:bg-slate-200 text-[#111827] text-xs sm:text-sm font-semibold border border-slate-200/80 transition-all active:scale-95"
+                href="https://linkedin.com/in/vikashjoshi"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => onToast('Opening LinkedIn profile', 'info')}
+                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[#EEF3F9] hover:bg-[#4F46E5] text-[#111827] hover:text-white text-xs font-semibold border border-slate-200/80 transition-all active:scale-95 shadow-2xs group"
               >
-                <Mail className="w-4 h-4 text-[#4F46E5]" />
-                <span>{about.email}</span>
+                <Linkedin className="w-4 h-4 text-blue-600 group-hover:text-white transition-colors" />
+                <span>LinkedIn</span>
+              </a>
+
+              {/* GitHub */}
+              <a
+                href="https://github.com/vikashjoshi"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => onToast('Opening GitHub profile', 'info')}
+                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[#EEF3F9] hover:bg-[#111827] text-[#111827] hover:text-white text-xs font-semibold border border-slate-200/80 transition-all active:scale-95 shadow-2xs group"
+              >
+                <Github className="w-4 h-4 text-[#111827] group-hover:text-white transition-colors" />
+                <span>GitHub</span>
+              </a>
+
+              {/* Instagram */}
+              <a
+                href="https://instagram.com/vikashjoshi"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => onToast('Opening Instagram profile', 'info')}
+                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[#EEF3F9] hover:bg-gradient-to-r hover:from-purple-600 hover:to-pink-600 text-[#111827] hover:text-white text-xs font-semibold border border-slate-200/80 transition-all active:scale-95 shadow-2xs group"
+              >
+                <Instagram className="w-4 h-4 text-pink-600 group-hover:text-white transition-colors" />
+                <span>Instagram</span>
+              </a>
+
+              {/* WhatsApp */}
+              <a
+                href="https://wa.me/919999999999"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => onToast('Opening WhatsApp chat', 'info')}
+                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[#EEF3F9] hover:bg-emerald-600 text-[#111827] hover:text-white text-xs font-semibold border border-slate-200/80 transition-all active:scale-95 shadow-2xs group"
+              >
+                <MessageCircle className="w-4 h-4 text-emerald-600 group-hover:text-white transition-colors" />
+                <span>WhatsApp</span>
               </a>
             </div>
           </div>
@@ -182,202 +193,151 @@ export const AboutTab: React.FC<AboutTabProps> = ({
       </section>
 
       {/* ========================================================
-          3. PROFESSIONAL AREAS
+          3. FEATURE HIGHLIGHTS (3 small premium cards)
           ======================================================== */}
-      <section id="professional-areas-section" className="space-y-4">
-        <div className="flex items-center gap-2.5 px-1">
-          <div className="w-8 h-8 rounded-lg bg-indigo-50 flex items-center justify-center text-[#4F46E5]">
-            <Sparkles className="w-4 h-4" />
-          </div>
-          <div>
-            <h2 className="text-lg sm:text-xl font-bold text-[#111827]">
-              Professional Expertise &amp; Core Domains
-            </h2>
-            <p className="text-xs sm:text-sm text-[#64748B]">
-              व्यावसायिक विशेषज्ञता के मुख्य क्षेत्र
-            </p>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {/* Card 1: QA & Software Testing */}
-          <div className="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-xs flex flex-col justify-between hover:border-indigo-200 transition-all">
-            <div className="space-y-3">
-              <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600">
-                <ShieldCheck className="w-6 h-6" />
-              </div>
-              <h3 className="text-lg font-bold text-[#111827]">
-                QA &amp; Software Testing
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                सॉफ़्टवेयर गुणवत्ता सुनिश्चित करने के लिए संपूर्ण मैन्युअल और ऑटोमेशन टेस्टिंग। बग फ्री रिलीज़, टेस्ट केस डिज़ाइन और आरटीएम (RTM) प्रबंधन।
+      <section id="about-feature-highlights" className="space-y-3">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
+          {/* Card 1: समर्पित */}
+          <div className="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200/80 shadow-xs flex items-start gap-3.5 hover:border-indigo-200 transition-all">
+            <div className="w-10 h-10 rounded-xl bg-indigo-50 text-[#4F46E5] flex items-center justify-center shrink-0">
+              <HeartHandshake className="w-5 h-5" />
+            </div>
+            <div className="space-y-0.5">
+              <h3 className="text-sm font-bold text-[#111827]">समर्पित</h3>
+              <p className="text-xs text-slate-600 leading-snug">
+                क्वालिटी और परफेक्शन मेरी पहचान
               </p>
-              <div className="pt-2 flex flex-wrap gap-1.5">
-                <span className="px-2 py-0.5 rounded bg-[#EEF3F9] text-xs font-medium text-[#111827]">Manual Testing</span>
-                <span className="px-2 py-0.5 rounded bg-[#EEF3F9] text-xs font-medium text-[#111827]">Functional &amp; Regression</span>
-                <span className="px-2 py-0.5 rounded bg-[#EEF3F9] text-xs font-medium text-[#111827]">Smoke &amp; Sanity</span>
-                <span className="px-2 py-0.5 rounded bg-[#EEF3F9] text-xs font-medium text-[#111827]">API &amp; UI Testing</span>
-                <span className="px-2 py-0.5 rounded bg-[#EEF3F9] text-xs font-medium text-[#111827]">Playwright &amp; TS</span>
-              </div>
             </div>
           </div>
 
-          {/* Card 2: Web Development */}
-          <div className="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-xs flex flex-col justify-between hover:border-indigo-200 transition-all">
-            <div className="space-y-3">
-              <div className="w-12 h-12 rounded-xl bg-indigo-50 flex items-center justify-center text-[#4F46E5]">
-                <Code2 className="w-6 h-6" />
-              </div>
-              <h3 className="text-lg font-bold text-[#111827]">
-                Web Development
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                आधुनिक और तीव्र वेब ऐप्लिकेशन निर्माण। स्वच्छ कोड, उत्तरदायी इंटरफ़ेस (Responsive UI) और सर्वोत्तम फ्रंटएंड आर्किटेक्चर।
+          {/* Card 2: निरंतर सीखना */}
+          <div className="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200/80 shadow-xs flex items-start gap-3.5 hover:border-indigo-200 transition-all">
+            <div className="w-10 h-10 rounded-xl bg-cyan-50 text-[#06B6D4] flex items-center justify-center shrink-0">
+              <BookOpen className="w-5 h-5" />
+            </div>
+            <div className="space-y-0.5">
+              <h3 className="text-sm font-bold text-[#111827]">निरंतर सीखना</h3>
+              <p className="text-xs text-slate-600 leading-snug">
+                हर दिन कुछ नया सीखने की कोशिश
               </p>
-              <div className="pt-2 flex flex-wrap gap-1.5">
-                <span className="px-2 py-0.5 rounded bg-[#EEF3F9] text-xs font-medium text-[#111827]">React</span>
-                <span className="px-2 py-0.5 rounded bg-[#EEF3F9] text-xs font-medium text-[#111827]">TypeScript</span>
-                <span className="px-2 py-0.5 rounded bg-[#EEF3F9] text-xs font-medium text-[#111827]">JavaScript</span>
-                <span className="px-2 py-0.5 rounded bg-[#EEF3F9] text-xs font-medium text-[#111827]">HTML5 &amp; CSS3</span>
-                <span className="px-2 py-0.5 rounded bg-[#EEF3F9] text-xs font-medium text-[#111827]">Tailwind CSS</span>
+            </div>
+          </div>
+
+          {/* Card 3: ईमानदारी */}
+          <div className="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200/80 shadow-xs flex items-start gap-3.5 hover:border-indigo-200 transition-all">
+            <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+              <Award className="w-5 h-5" />
+            </div>
+            <div className="space-y-0.5">
+              <h3 className="text-sm font-bold text-[#111827]">ईमानदारी</h3>
+              <p className="text-xs text-slate-600 leading-snug">
+                काम के प्रति पूरी जिम्मेदारी और पारदर्शिता
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================
+          4. MY EXPERTISE (4 responsive cards)
+          ======================================================== */}
+      <section id="about-expertise-section" className="space-y-4">
+        <div className="flex items-center gap-2 px-1">
+          <div className="w-7 h-7 rounded-lg bg-indigo-50 flex items-center justify-center text-[#4F46E5]">
+            <Sparkles className="w-4 h-4" />
+          </div>
+          <h2 className="text-lg sm:text-xl font-bold text-[#111827]">
+            My Expertise
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {/* Card 1: QA & Testing */}
+          <div className="p-5 rounded-2xl bg-white border border-slate-200/80 shadow-xs space-y-3 hover:border-indigo-200 transition-all">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
+                <ShieldCheck className="w-5 h-5" />
               </div>
+              <h3 className="text-base font-bold text-[#111827]">
+                QA &amp; Testing
+              </h3>
+            </div>
+            <p className="text-xs text-slate-600 leading-relaxed">
+              सॉफ़्टवेयर गुणवत्ता, बग डिटेक्शन और टेस्ट कवरेज का संपूर्ण प्रबंधन।
+            </p>
+            <div className="flex flex-wrap gap-1.5 pt-1">
+              {[
+                'Manual Testing',
+                'API Testing',
+                'Test Case Design',
+                'Bug Reporting',
+                'RTM & STLC',
+              ].map((skill, i) => (
+                <span
+                  key={i}
+                  className="px-2.5 py-1 rounded-md bg-[#EEF3F9] text-[#111827] text-xs font-medium border border-slate-200/60"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Card 2: Development */}
+          <div className="p-5 rounded-2xl bg-white border border-slate-200/80 shadow-xs space-y-3 hover:border-indigo-200 transition-all">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-indigo-50 text-[#4F46E5] flex items-center justify-center shrink-0">
+                <Code2 className="w-5 h-5" />
+              </div>
+              <h3 className="text-base font-bold text-[#111827]">
+                Development
+              </h3>
+            </div>
+            <p className="text-xs text-slate-600 leading-relaxed">
+              आधुनिक, तीव्र और रिस्पॉन्सिव वेब ऐप्लिकेशन्स का निर्माण।
+            </p>
+            <div className="flex flex-wrap gap-1.5 pt-1">
+              {[
+                'React.js',
+                'JavaScript',
+                'TypeScript',
+                'HTML & CSS',
+                'Responsive Design',
+              ].map((skill, i) => (
+                <span
+                  key={i}
+                  className="px-2.5 py-1 rounded-md bg-[#EEF3F9] text-[#111827] text-xs font-medium border border-slate-200/60"
+                >
+                  {skill}
+                </span>
+              ))}
             </div>
           </div>
 
           {/* Card 3: Digital Marketing */}
-          <div className="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-xs flex flex-col justify-between hover:border-indigo-200 transition-all">
-            <div className="space-y-3">
-              <div className="w-12 h-12 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-600">
-                <TrendingUp className="w-6 h-6" />
+          <div className="p-5 rounded-2xl bg-white border border-slate-200/80 shadow-xs space-y-3 hover:border-indigo-200 transition-all">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+                <TrendingUp className="w-5 h-5" />
               </div>
-              <h3 className="text-lg font-bold text-[#111827]">
+              <h3 className="text-base font-bold text-[#111827]">
                 Digital Marketing
               </h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                मेटा ऐड्स और व्हाट्सएप मार्केटिंग के ज़रिए लक्षित ऑडियंस तक पहुंच, लीड जनरेशन और ब्रांड उपस्थिति में वृद्धि।
-              </p>
-              <div className="pt-2 flex flex-wrap gap-1.5">
-                <span className="px-2 py-0.5 rounded bg-[#EEF3F9] text-xs font-medium text-[#111827]">Meta Ads</span>
-                <span className="px-2 py-0.5 rounded bg-[#EEF3F9] text-xs font-medium text-[#111827]">Instagram Marketing</span>
-                <span className="px-2 py-0.5 rounded bg-[#EEF3F9] text-xs font-medium text-[#111827]">Facebook Ads</span>
-                <span className="px-2 py-0.5 rounded bg-[#EEF3F9] text-xs font-medium text-[#111827]">WhatsApp Marketing</span>
-                <span className="px-2 py-0.5 rounded bg-[#EEF3F9] text-xs font-medium text-[#111827]">Lead Generation</span>
-              </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ========================================================
-          4. SKILLS & TECHNOLOGIES
-          ======================================================== */}
-      <section
-        id="skills-technologies-section"
-        className="bg-white rounded-2xl sm:rounded-3xl border border-slate-200/80 p-6 sm:p-8 shadow-xs space-y-6"
-      >
-        <div className="flex items-center gap-2.5">
-          <div className="w-9 h-9 rounded-xl bg-indigo-50 flex items-center justify-center text-[#4F46E5]">
-            <Layers className="w-5 h-5" />
-          </div>
-          <div>
-            <h2 className="text-lg sm:text-xl font-bold text-[#111827]">
-              Skills &amp; Technologies
-            </h2>
-            <p className="text-xs sm:text-sm text-[#64748B]">
-              तकनीकी कौशल और कार्यप्रणाली
+            <p className="text-xs text-slate-600 leading-relaxed">
+              डिजिटल कैंपेन, सोशल मीडिया रीच और बिज़नेस लीड जनरेशन।
             </p>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Group 1: QA & Software Testing */}
-          <div className="bg-[#F8FAFC] rounded-xl p-5 border border-slate-200/70 space-y-3">
-            <div className="flex items-center gap-2 text-[#4F46E5] font-bold text-sm">
-              <CheckCircle2 className="w-4 h-4" />
-              <span>Software QA &amp; Testing Stack</span>
-            </div>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-1.5 pt-1">
               {[
-                'QA Tester',
-                'Software Testing',
-                'Manual Testing',
-                'Functional Testing',
-                'Regression Testing',
-                'Smoke Testing',
-                'Sanity Testing',
-                'UI Testing',
-                'Responsive Testing',
-                'API Testing',
-                'Bug Reporting',
-                'Test Case Design',
-                'RTM (Traceability Matrix)',
-                'Test Scenarios',
-                'Playwright',
-                'Defect Lifecycle',
-              ].map((skill, idx) => (
-                <span
-                  key={idx}
-                  className="px-2.5 py-1 rounded-md bg-white border border-slate-200 text-xs font-semibold text-[#111827] shadow-2xs"
-                >
-                  {skill}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          {/* Group 2: Web Development */}
-          <div className="bg-[#F8FAFC] rounded-xl p-5 border border-slate-200/70 space-y-3">
-            <div className="flex items-center gap-2 text-[#4F46E5] font-bold text-sm">
-              <Code2 className="w-4 h-4" />
-              <span>Web Development Technologies</span>
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {[
-                'React',
-                'TypeScript',
-                'JavaScript (ES6+)',
-                'HTML5',
-                'CSS3',
-                'Tailwind CSS',
-                'Responsive Web Design',
-                'Vite',
-                'Git & GitHub',
-                'State Management',
-                'DOM & Web APIs',
-                'Cross-Browser Support',
-              ].map((skill, idx) => (
-                <span
-                  key={idx}
-                  className="px-2.5 py-1 rounded-md bg-white border border-slate-200 text-xs font-semibold text-[#111827] shadow-2xs"
-                >
-                  {skill}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          {/* Group 3: Digital Marketing */}
-          <div className="bg-[#F8FAFC] rounded-xl p-5 border border-slate-200/70 space-y-3">
-            <div className="flex items-center gap-2 text-[#4F46E5] font-bold text-sm">
-              <TrendingUp className="w-4 h-4" />
-              <span>Digital Marketing &amp; Growth</span>
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {[
-                'Digital Marketing',
                 'Meta Ads',
+                'Social Media',
                 'Instagram Marketing',
                 'Facebook Marketing',
                 'WhatsApp Marketing',
-                'Campaign Strategy',
-                'Lead Generation',
-                'Audience Targeting',
-                'Ad Copy & Creatives',
-                'Performance Analytics',
-              ].map((skill, idx) => (
+              ].map((skill, i) => (
                 <span
-                  key={idx}
-                  className="px-2.5 py-1 rounded-md bg-white border border-slate-200 text-xs font-semibold text-[#111827] shadow-2xs"
+                  key={i}
+                  className="px-2.5 py-1 rounded-md bg-[#EEF3F9] text-[#111827] text-xs font-medium border border-slate-200/60"
                 >
                   {skill}
                 </span>
@@ -385,26 +345,30 @@ export const AboutTab: React.FC<AboutTabProps> = ({
             </div>
           </div>
 
-          {/* Group 4: Tools & Testing Environments */}
-          <div className="bg-[#F8FAFC] rounded-xl p-5 border border-slate-200/70 space-y-3">
-            <div className="flex items-center gap-2 text-[#4F46E5] font-bold text-sm">
-              <FileCheck className="w-4 h-4" />
-              <span>Tools &amp; Environments</span>
+          {/* Card 4: Automation */}
+          <div className="p-5 rounded-2xl bg-white border border-slate-200/80 shadow-xs space-y-3 hover:border-indigo-200 transition-all">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center shrink-0">
+                <Bot className="w-5 h-5" />
+              </div>
+              <h3 className="text-base font-bold text-[#111827]">
+                Automation
+              </h3>
             </div>
-            <div className="flex flex-wrap gap-2">
+            <p className="text-xs text-slate-600 leading-relaxed">
+              ऑटोमेटेड टेस्ट स्क्रिप्ट्स और एंड-टू-एंड रिग्रेशन टेस्ट सूट।
+            </p>
+            <div className="flex flex-wrap gap-1.5 pt-1">
               {[
-                'Postman (API)',
-                'JIRA / Bugzilla',
-                'Playwright Runner',
-                'Chrome DevTools',
-                'VS Code',
-                'Meta Business Manager',
-                'WhatsApp Business API',
-                'Test Documentations',
-              ].map((skill, idx) => (
+                'Playwright',
+                'TypeScript',
+                'UI Automation',
+                'API Automation',
+                'Regression Testing',
+              ].map((skill, i) => (
                 <span
-                  key={idx}
-                  className="px-2.5 py-1 rounded-md bg-white border border-slate-200 text-xs font-semibold text-[#111827] shadow-2xs"
+                  key={i}
+                  className="px-2.5 py-1 rounded-md bg-[#EEF3F9] text-[#111827] text-xs font-medium border border-slate-200/60"
                 >
                   {skill}
                 </span>
@@ -415,413 +379,221 @@ export const AboutTab: React.FC<AboutTabProps> = ({
       </section>
 
       {/* ========================================================
-          5. EDUCATION (BCA & MCA)
+          5. EDUCATION (शिक्षा)
           ======================================================== */}
-      <section
-        id="education-section"
-        className="bg-white rounded-2xl sm:rounded-3xl border border-slate-200/80 p-6 sm:p-8 shadow-xs space-y-6"
-      >
-        <div className="flex items-center gap-2.5">
-          <div className="w-9 h-9 rounded-xl bg-indigo-50 flex items-center justify-center text-[#4F46E5]">
-            <GraduationCap className="w-5 h-5" />
+      <section id="about-education-section" className="space-y-4">
+        <div className="flex items-center gap-2 px-1">
+          <div className="w-7 h-7 rounded-lg bg-indigo-50 flex items-center justify-center text-[#4F46E5]">
+            <GraduationCap className="w-4 h-4" />
           </div>
-          <div>
-            <h2 className="text-lg sm:text-xl font-bold text-[#111827]">
-              Education &amp; Academic Qualifications
-            </h2>
-            <p className="text-xs sm:text-sm text-[#64748B]">
-              शैक्षणिक योग्यता एवं डिग्रियाँ
-            </p>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          {/* Degree 1: MCA */}
-          <div className="p-5 rounded-2xl bg-[#EEF3F9]/70 border border-slate-200/80 space-y-2 relative overflow-hidden">
-            <div className="flex items-center justify-between">
-              <span className="px-2.5 py-0.5 rounded-full bg-[#4F46E5] text-white text-xs font-bold">
-                Post Graduation
-              </span>
-              <span className="text-xs font-semibold text-[#64748B]">
-                Master's Degree
-              </span>
-            </div>
-            <h3 className="text-lg font-bold text-[#111827]">
-              MCA (Master of Computer Applications)
-            </h3>
-            <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
-              सॉफ़्टवेयर इंजीनियरिंग, डेटाबेस मैनेजमेंट, एडवांस्ड प्रोग्रामिंग, और सॉफ़्टवेयर क्वालिटी एश्योरेंस एवं टेस्टिंग पद्धतियों में विशेषज्ञता।
-            </p>
-            <div className="pt-1 text-xs text-[#4F46E5] font-semibold flex items-center gap-1">
-              <CheckCircle2 className="w-3.5 h-3.5" />
-              <span>Advanced Computer Applications &amp; QA</span>
-            </div>
-          </div>
-
-          {/* Degree 2: BCA */}
-          <div className="p-5 rounded-2xl bg-[#EEF3F9]/70 border border-slate-200/80 space-y-2 relative overflow-hidden">
-            <div className="flex items-center justify-between">
-              <span className="px-2.5 py-0.5 rounded-full bg-slate-800 text-white text-xs font-bold">
-                Graduation
-              </span>
-              <span className="text-xs font-semibold text-[#64748B]">
-                Bachelor's Degree
-              </span>
-            </div>
-            <h3 className="text-lg font-bold text-[#111827]">
-              BCA (Bachelor of Computer Applications)
-            </h3>
-            <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
-              कंप्यूटर साइंस के बुनियादी सिद्धांत, प्रोग्रामिंग फंडामेंटल्स (C/C++/Java), डेटा संरचनाएं, वेब तकनीक और डेटाबेस सिस्टम्स।
-            </p>
-            <div className="pt-1 text-xs text-[#4F46E5] font-semibold flex items-center gap-1">
-              <CheckCircle2 className="w-3.5 h-3.5" />
-              <span>Computer Science Fundamentals &amp; Web</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ========================================================
-          6. WHAT I DO (Services & Capabilities)
-          ======================================================== */}
-      <section
-        id="what-i-do-section"
-        className="bg-white rounded-2xl sm:rounded-3xl border border-slate-200/80 p-6 sm:p-8 shadow-xs space-y-6"
-      >
-        <div className="flex items-center gap-2.5">
-          <div className="w-9 h-9 rounded-xl bg-indigo-50 flex items-center justify-center text-[#4F46E5]">
-            <Target className="w-5 h-5" />
-          </div>
-          <div>
-            <h2 className="text-lg sm:text-xl font-bold text-[#111827]">
-              What I Do
-            </h2>
-            <p className="text-xs sm:text-sm text-[#64748B]">
-              मुख्य सेवाएं और कार्य क्षमताएं
-            </p>
-          </div>
+          <h2 className="text-lg sm:text-xl font-bold text-[#111827]">
+            शिक्षा (Education)
+          </h2>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div className="p-4.5 rounded-xl bg-[#F8FAFC] border border-slate-200/70 space-y-2">
-            <div className="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center">
-              <Bug className="w-4 h-4" />
+          {/* Card 1: BCA */}
+          <div className="p-5 rounded-2xl bg-white border border-slate-200/80 shadow-xs space-y-2.5 hover:border-indigo-200 transition-all">
+            <div className="flex items-center justify-between">
+              <span className="px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-700 text-xs font-bold border border-slate-200">
+                Graduation
+              </span>
+              <GraduationCap className="w-4 h-4 text-[#4F46E5]" />
             </div>
-            <h3 className="text-base font-bold text-[#111827]">
-              Comprehensive QA &amp; Defect Management
+            <h3 className="text-base sm:text-lg font-bold text-[#111827]">
+              BCA
             </h3>
+            <p className="text-xs sm:text-sm text-[#4F46E5] font-semibold">
+              Bachelor of Computer Applications
+            </p>
             <p className="text-xs text-slate-600 leading-relaxed">
-              व्यवस्थित टेस्ट केस निष्पादन, बग रिपोर्टिंग और पुन: परीक्षण (re-testing) ताकि सॉफ़्टवेयर बिना किसी तकनीकी त्रुटि के रिलीज़ हो।
+              कंप्यूटर विज्ञान के बुनियादी सिद्धांत, प्रोग्रामिंग, डेटाबेस सिस्टम और वेब तकनीक।
             </p>
           </div>
 
-          <div className="p-4.5 rounded-xl bg-[#F8FAFC] border border-slate-200/70 space-y-2">
-            <div className="w-8 h-8 rounded-lg bg-indigo-50 text-[#4F46E5] flex items-center justify-center">
-              <Code2 className="w-4 h-4" />
+          {/* Card 2: MCA */}
+          <div className="p-5 rounded-2xl bg-white border border-slate-200/80 shadow-xs space-y-2.5 hover:border-indigo-200 transition-all">
+            <div className="flex items-center justify-between">
+              <span className="px-2.5 py-0.5 rounded-full bg-indigo-50 text-[#4F46E5] text-xs font-bold border border-indigo-200/60">
+                Post Graduation
+              </span>
+              <GraduationCap className="w-4 h-4 text-[#4F46E5]" />
             </div>
-            <h3 className="text-base font-bold text-[#111827]">
-              Modern Frontend Web Development
+            <h3 className="text-base sm:text-lg font-bold text-[#111827]">
+              MCA
             </h3>
-            <p className="text-xs text-slate-600 leading-relaxed">
-              React और TypeScript के साथ तेज़ और पूरी तरह से रिस्पॉन्सिव वेब ऐप्लिकेशन का निर्माण, जो सभी डिवाइसेस पर सुचारू रूप से कार्य करें।
+            <p className="text-xs sm:text-sm text-[#4F46E5] font-semibold">
+              Master of Computer Applications
             </p>
-          </div>
-
-          <div className="p-4.5 rounded-xl bg-[#F8FAFC] border border-slate-200/70 space-y-2">
-            <div className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center">
-              <TrendingUp className="w-4 h-4" />
-            </div>
-            <h3 className="text-base font-bold text-[#111827]">
-              Meta Ads &amp; WhatsApp Marketing
-            </h3>
             <p className="text-xs text-slate-600 leading-relaxed">
-              फेसबुक, इंस्टाग्राम और व्हाट्सएप अभियानों के माध्यम से सही दर्शकों को लक्षित कर उच्च आरओआई (ROI) और क्वालिटी लीड्स प्राप्त करना।
-            </p>
-          </div>
-
-          <div className="p-4.5 rounded-xl bg-[#F8FAFC] border border-slate-200/70 space-y-2">
-            <div className="w-8 h-8 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center">
-              <Smartphone className="w-4 h-4" />
-            </div>
-            <h3 className="text-base font-bold text-[#111827]">
-              Cross-Browser &amp; Responsive Audits
-            </h3>
-            <p className="text-xs text-slate-600 leading-relaxed">
-              मोबाइल, टैबलेट और डेस्कटॉप स्क्रीन पर संपूर्ण UI/UX और परफ़ॉर्मेंस ऑडिटिंग ताकि बेहतरीन यूज़र एक्सपीरियंस मिले।
+              उन्नत सॉफ़्टवेयर इंजीनियरिंग, सॉफ़्टवेयर टेस्टिंग व क्वालिटी एश्योरेंस तथा सिस्टम आर्किटेक्चर।
             </p>
           </div>
         </div>
       </section>
 
       {/* ========================================================
-          7. MY APPROACH (Testing & Development Workflow)
+          6. WHAT I DO (मैं क्या करता हूँ) - 5 compact cards
           ======================================================== */}
-      <section
-        id="my-approach-section"
-        className="bg-white rounded-2xl sm:rounded-3xl border border-slate-200/80 p-6 sm:p-8 shadow-xs space-y-6"
-      >
-        <div className="flex items-center gap-2.5">
-          <div className="w-9 h-9 rounded-xl bg-indigo-50 flex items-center justify-center text-[#4F46E5]">
-            <ListChecks className="w-5 h-5" />
+      <section id="about-what-i-do-section" className="space-y-4">
+        <div className="flex items-center gap-2 px-1">
+          <div className="w-7 h-7 rounded-lg bg-indigo-50 flex items-center justify-center text-[#4F46E5]">
+            <Cpu className="w-4 h-4" />
           </div>
-          <div>
-            <h2 className="text-lg sm:text-xl font-bold text-[#111827]">
-              My Testing &amp; Development Approach
-            </h2>
-            <p className="text-xs sm:text-sm text-[#64748B]">
-              गुणवत्ता नियंत्रण और विकास की कार्यप्रणाली
-            </p>
-          </div>
+          <h2 className="text-lg sm:text-xl font-bold text-[#111827]">
+            मैं क्या करता हूँ (What I Do)
+          </h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <div className="p-4 rounded-xl bg-[#EEF3F9]/60 border border-slate-200/70 space-y-2">
-            <div className="flex items-center justify-between">
-              <span className="w-6 h-6 rounded-full bg-[#4F46E5] text-white text-xs font-bold flex items-center justify-center">
-                1
-              </span>
-              <Search className="w-4 h-4 text-[#64748B]" />
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+          {/* 1. Software Testing */}
+          <div className="p-4 rounded-xl bg-white border border-slate-200/80 shadow-xs flex flex-col items-center text-center space-y-2 hover:border-indigo-200 transition-all">
+            <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center">
+              <ShieldCheck className="w-5 h-5" />
             </div>
-            <h4 className="text-sm font-bold text-[#111827]">
-              Requirement &amp; RTM Analysis
-            </h4>
-            <p className="text-xs text-slate-600 leading-relaxed">
-              आवश्यकताओं का गहन विश्लेषण और RTM मैपिंग तैयार करना ताकि कोई फीचर छूटे नहीं।
-            </p>
-          </div>
-
-          <div className="p-4 rounded-xl bg-[#EEF3F9]/60 border border-slate-200/70 space-y-2">
-            <div className="flex items-center justify-between">
-              <span className="w-6 h-6 rounded-full bg-[#4F46E5] text-white text-xs font-bold flex items-center justify-center">
-                2
-              </span>
-              <FileCheck className="w-4 h-4 text-[#64748B]" />
-            </div>
-            <h4 className="text-sm font-bold text-[#111827]">
-              Test Scenarios &amp; Case Design
-            </h4>
-            <p className="text-xs text-slate-600 leading-relaxed">
-              पॉज़िटिव, नेगेटिव और बाउंड्री वैल्यूज़ के साथ व्यापक टेस्ट केस तैयार करना।
-            </p>
-          </div>
-
-          <div className="p-4 rounded-xl bg-[#EEF3F9]/60 border border-slate-200/70 space-y-2">
-            <div className="flex items-center justify-between">
-              <span className="w-6 h-6 rounded-full bg-[#4F46E5] text-white text-xs font-bold flex items-center justify-center">
-                3
-              </span>
-              <Bug className="w-4 h-4 text-[#64748B]" />
-            </div>
-            <h4 className="text-sm font-bold text-[#111827]">
-              Execution &amp; Defect Logging
-            </h4>
-            <p className="text-xs text-slate-600 leading-relaxed">
-              सटीक टेस्ट निष्पादन, स्पष्ट री-प्रोडक्शन स्टेप्स के साथ बग रिपोर्टिंग और ट्रैकिंग।
-            </p>
-          </div>
-
-          <div className="p-4 rounded-xl bg-[#EEF3F9]/60 border border-slate-200/70 space-y-2">
-            <div className="flex items-center justify-between">
-              <span className="w-6 h-6 rounded-full bg-[#4F46E5] text-white text-xs font-bold flex items-center justify-center">
-                4
-              </span>
-              <MonitorCheck className="w-4 h-4 text-[#64748B]" />
-            </div>
-            <h4 className="text-sm font-bold text-[#111827]">
-              Regression &amp; Release Sign-Off
-            </h4>
-            <p className="text-xs text-slate-600 leading-relaxed">
-              कम्प्लीट रिग्रेशन टेस्टिंग, क्रॉस-ब्राउज़र जांच और अंतिम क्वालिटी सर्टिफ़िकेशन।
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ========================================================
-          8. MY PROJECTS & HIGHLIGHTS
-          ======================================================== */}
-      <section
-        id="my-projects-highlights-section"
-        className="bg-white rounded-2xl sm:rounded-3xl border border-slate-200/80 p-6 sm:p-8 shadow-xs space-y-6"
-      >
-        <div className="flex items-center gap-2.5">
-          <div className="w-9 h-9 rounded-xl bg-indigo-50 flex items-center justify-center text-[#4F46E5]">
-            <Activity className="w-5 h-5" />
-          </div>
-          <div>
-            <h2 className="text-lg sm:text-xl font-bold text-[#111827]">
-              Projects &amp; Deliverables
-            </h2>
-            <p className="text-xs sm:text-sm text-[#64748B]">
-              सॉफ़्टवेयर टेस्टिंग, वेब डेवलपमेंट और डिजिटल मार्केटिंग प्रोजेक्ट्स
-            </p>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {/* Project 1 */}
-          <div className="p-5 rounded-2xl bg-[#F8FAFC] border border-slate-200/80 space-y-3 hover:border-slate-300 transition-colors">
-            <span className="px-2.5 py-1 rounded-full bg-blue-50 text-blue-700 text-[11px] font-bold border border-blue-200/60">
-              QA &amp; API Testing
+            <h3 className="text-xs sm:text-sm font-bold text-[#111827] leading-tight">
+              Software Testing
+            </h3>
+            <span className="text-[11px] text-[#64748B] leading-none">
+              Manual &amp; Functional
             </span>
-            <h3 className="text-base font-bold text-[#111827]">
-              E-Commerce &amp; Web Platform QA
-            </h3>
-            <p className="text-xs text-slate-600 leading-relaxed">
-              200+ मैन्युअल और फ़ंक्शनल टेस्ट केसेस का निष्पादन, Postman द्वारा API सत्यापन, और कार्ट व चेकआउट फ़्लो की पूर्ण रिग्रेशन टेस्टिंग।
-            </p>
-            <div className="flex flex-wrap gap-1 pt-1">
-              <span className="px-2 py-0.5 rounded bg-white text-[10px] font-semibold text-slate-700 border border-slate-200">Test Cases</span>
-              <span className="px-2 py-0.5 rounded bg-white text-[10px] font-semibold text-slate-700 border border-slate-200">Postman</span>
-              <span className="px-2 py-0.5 rounded bg-white text-[10px] font-semibold text-slate-700 border border-slate-200">RTM</span>
-            </div>
           </div>
 
-          {/* Project 2 */}
-          <div className="p-5 rounded-2xl bg-[#F8FAFC] border border-slate-200/80 space-y-3 hover:border-slate-300 transition-colors">
-            <span className="px-2.5 py-1 rounded-full bg-indigo-50 text-[#4F46E5] text-[11px] font-bold border border-indigo-200/60">
+          {/* 2. Test Automation */}
+          <div className="p-4 rounded-xl bg-white border border-slate-200/80 shadow-xs flex flex-col items-center text-center space-y-2 hover:border-indigo-200 transition-all">
+            <div className="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center">
+              <Bot className="w-5 h-5" />
+            </div>
+            <h3 className="text-xs sm:text-sm font-bold text-[#111827] leading-tight">
+              Test Automation
+            </h3>
+            <span className="text-[11px] text-[#64748B] leading-none">
+              Playwright &amp; Scripts
+            </span>
+          </div>
+
+          {/* 3. Web Development */}
+          <div className="p-4 rounded-xl bg-white border border-slate-200/80 shadow-xs flex flex-col items-center text-center space-y-2 hover:border-indigo-200 transition-all">
+            <div className="w-10 h-10 rounded-xl bg-indigo-50 text-[#4F46E5] flex items-center justify-center">
+              <Code2 className="w-5 h-5" />
+            </div>
+            <h3 className="text-xs sm:text-sm font-bold text-[#111827] leading-tight">
               Web Development
-            </span>
-            <h3 className="text-base font-bold text-[#111827]">
-              Modern React &amp; TypeScript Web Apps
             </h3>
-            <p className="text-xs text-slate-600 leading-relaxed">
-              सुव्यवस्थित कॉम्पोनेंट आर्किटेक्चर, स्टेट मैनेजमेंट और Tailwind CSS के साथ निर्मित हाई-परफ़ॉर्मेंस रिस्पॉन्सिव वेब ऐप्लिकेशन्स।
-            </p>
-            <div className="flex flex-wrap gap-1 pt-1">
-              <span className="px-2 py-0.5 rounded bg-white text-[10px] font-semibold text-slate-700 border border-slate-200">React</span>
-              <span className="px-2 py-0.5 rounded bg-white text-[10px] font-semibold text-slate-700 border border-slate-200">TypeScript</span>
-              <span className="px-2 py-0.5 rounded bg-white text-[10px] font-semibold text-slate-700 border border-slate-200">Tailwind</span>
-            </div>
+            <span className="text-[11px] text-[#64748B] leading-none">
+              React &amp; TypeScript
+            </span>
           </div>
 
-          {/* Project 3 */}
-          <div className="p-5 rounded-2xl bg-[#F8FAFC] border border-slate-200/80 space-y-3 hover:border-slate-300 transition-colors">
-            <span className="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 text-[11px] font-bold border border-emerald-200/60">
-              Digital Marketing
-            </span>
-            <h3 className="text-base font-bold text-[#111827]">
-              Meta Ads &amp; WhatsApp Growth Campaigns
-            </h3>
-            <p className="text-xs text-slate-600 leading-relaxed">
-              इंस्टाग्राम और फेसबुक विज्ञापनों का सफल संचालन, ऑडियंस टारगेटिंग और व्हाट्सएप मार्केटिंग फनल द्वारा कन्वर्ज़न दर में वृद्धि।
-            </p>
-            <div className="flex flex-wrap gap-1 pt-1">
-              <span className="px-2 py-0.5 rounded bg-white text-[10px] font-semibold text-slate-700 border border-slate-200">Meta Ads</span>
-              <span className="px-2 py-0.5 rounded bg-white text-[10px] font-semibold text-slate-700 border border-slate-200">WhatsApp</span>
-              <span className="px-2 py-0.5 rounded bg-white text-[10px] font-semibold text-slate-700 border border-slate-200">Leads</span>
+          {/* 4. Digital Marketing */}
+          <div className="p-4 rounded-xl bg-white border border-slate-200/80 shadow-xs flex flex-col items-center text-center space-y-2 hover:border-indigo-200 transition-all">
+            <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
+              <TrendingUp className="w-5 h-5" />
             </div>
+            <h3 className="text-xs sm:text-sm font-bold text-[#111827] leading-tight">
+              Digital Marketing
+            </h3>
+            <span className="text-[11px] text-[#64748B] leading-none">
+              Meta Ads &amp; Growth
+            </span>
+          </div>
+
+          {/* 5. Quality Assurance */}
+          <div className="p-4 rounded-xl bg-white border border-slate-200/80 shadow-xs flex flex-col items-center text-center space-y-2 col-span-2 sm:col-span-1 hover:border-indigo-200 transition-all">
+            <div className="w-10 h-10 rounded-xl bg-cyan-50 text-[#06B6D4] flex items-center justify-center">
+              <MonitorCheck className="w-5 h-5" />
+            </div>
+            <h3 className="text-xs sm:text-sm font-bold text-[#111827] leading-tight">
+              Quality Assurance
+            </h3>
+            <span className="text-[11px] text-[#64748B] leading-none">
+              Bug-Free Releases
+            </span>
           </div>
         </div>
       </section>
 
       {/* ========================================================
-          9. SOCIAL LINKS / DIRECT CONTACT
+          7. MY PROJECTS (मेरे प्रोजेक्ट्स) - 2 specific cards
           ======================================================== */}
-      <section
-        id="contact-section"
-        className="bg-white rounded-2xl sm:rounded-3xl border border-slate-200/80 p-6 sm:p-8 md:p-10 shadow-xs space-y-6"
-      >
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-slate-200/70 pb-6">
-          <div className="text-center sm:text-left space-y-1">
-            <h3 className="text-xl font-bold text-[#111827]">
-              Connect with Vikash Joshi
-            </h3>
-            <p className="text-xs sm:text-sm text-[#64748B]">
-              सॉफ़्टवेयर टेस्टिंग, वेब डेवलपमेंट या डिजिटल मार्केटिंग के लिए संपर्क करें।
-            </p>
+      <section id="about-projects-section" className="space-y-4">
+        <div className="flex items-center gap-2 px-1">
+          <div className="w-7 h-7 rounded-lg bg-indigo-50 flex items-center justify-center text-[#4F46E5]">
+            <Sparkles className="w-4 h-4" />
           </div>
-
-          <button
-            type="button"
-            onClick={onOpenMessage}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#4F46E5] hover:bg-[#4338CA] text-white text-xs sm:text-sm font-semibold transition-all shadow-xs active:scale-95 shrink-0"
-          >
-            <MessageSquare className="w-4 h-4" />
-            <span>Send Direct Note</span>
-          </button>
+          <h2 className="text-lg sm:text-xl font-bold text-[#111827]">
+            मेरे प्रोजेक्ट्स (My Projects)
+          </h2>
         </div>
 
-        {/* Contact Specs Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-          <a
-            href={`mailto:${about.email}`}
-            onClick={() => onToast('Opening email client', 'info')}
-            className="p-4 rounded-xl bg-[#EEF3F9] hover:bg-indigo-50 border border-slate-200/70 flex items-center gap-3 transition-colors group"
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+          {/* Project 1: Vikash Joshi QA Portfolio */}
+          <div
+            id="about-project-1"
+            className="p-5 sm:p-6 rounded-2xl bg-white border border-slate-200/80 shadow-xs flex flex-col justify-between space-y-4 hover:shadow-md hover:border-indigo-200 transition-all"
           >
-            <div className="w-10 h-10 rounded-lg bg-white flex items-center justify-center text-[#4F46E5] shadow-2xs group-hover:scale-105 transition-transform">
-              <Mail className="w-5 h-5" />
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <span className="px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 text-[11px] font-bold border border-blue-200/60">
+                  QA Portfolio
+                </span>
+                <span className="text-xs text-slate-400 font-medium">Live</span>
+              </div>
+              <h3 className="text-lg font-bold text-[#111827]">
+                Vikash Joshi
+              </h3>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Professional QA Tester portfolio showcasing test plans, automation test cases, bug reports, RTM, and Playwright automation suites.
+              </p>
             </div>
-            <div className="overflow-hidden">
-              <span className="text-[11px] font-semibold text-[#64748B] uppercase tracking-wider block">
-                Email
-              </span>
-              <span className="text-xs font-bold text-[#111827] truncate block">
-                {about.email}
-              </span>
-            </div>
-          </a>
 
-          <a
-            href="https://github.com/vikashjoshi"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => onToast('Opening GitHub profile', 'info')}
-            className="p-4 rounded-xl bg-[#EEF3F9] hover:bg-indigo-50 border border-slate-200/70 flex items-center gap-3 transition-colors group"
-          >
-            <div className="w-10 h-10 rounded-lg bg-white flex items-center justify-center text-[#111827] shadow-2xs group-hover:scale-105 transition-transform">
-              <Github className="w-5 h-5" />
+            <div className="pt-2 border-t border-slate-100">
+              <a
+                href="https://vikashjoshi.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => onToast('Opening QA Portfolio', 'info')}
+                className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#111827] hover:bg-[#4F46E5] text-white text-xs font-semibold transition-colors shadow-xs active:scale-98"
+              >
+                <span>View Live Project</span>
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
             </div>
-            <div className="overflow-hidden">
-              <span className="text-[11px] font-semibold text-[#64748B] uppercase tracking-wider block">
-                GitHub
-              </span>
-              <span className="text-xs font-bold text-[#111827] truncate block">
-                github.com/vikashjoshi
-              </span>
-            </div>
-          </a>
+          </div>
 
-          <a
-            href="https://linkedin.com/in/vikashjoshi"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => onToast('Opening LinkedIn profile', 'info')}
-            className="p-4 rounded-xl bg-[#EEF3F9] hover:bg-indigo-50 border border-slate-200/70 flex items-center gap-3 transition-colors group"
+          {/* Project 2: Pandit Sarwan Ji Astrology Website */}
+          <div
+            id="about-project-2"
+            className="p-5 sm:p-6 rounded-2xl bg-white border border-slate-200/80 shadow-xs flex flex-col justify-between space-y-4 hover:shadow-md hover:border-indigo-200 transition-all"
           >
-            <div className="w-10 h-10 rounded-lg bg-white flex items-center justify-center text-blue-600 shadow-2xs group-hover:scale-105 transition-transform">
-              <Linkedin className="w-5 h-5" />
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <span className="px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-700 text-[11px] font-bold border border-amber-200/60">
+                  Astrology Website
+                </span>
+                <span className="text-xs text-slate-400 font-medium">Live</span>
+              </div>
+              <h3 className="text-lg font-bold text-[#111827]">
+                Pandit Sarwan Ji
+              </h3>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Premium astrology website featuring astrology services, consultation bookings, responsive layouts, WhatsApp integration, and SEO optimization.
+              </p>
             </div>
-            <div className="overflow-hidden">
-              <span className="text-[11px] font-semibold text-[#64748B] uppercase tracking-wider block">
-                LinkedIn
-              </span>
-              <span className="text-xs font-bold text-[#111827] truncate block">
-                linkedin.com/in/vikashjoshi
-              </span>
-            </div>
-          </a>
 
-          <a
-            href="https://x.com/vikashjoshi"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => onToast('Opening Twitter/X profile', 'info')}
-            className="p-4 rounded-xl bg-[#EEF3F9] hover:bg-indigo-50 border border-slate-200/70 flex items-center gap-3 transition-colors group"
-          >
-            <div className="w-10 h-10 rounded-lg bg-white flex items-center justify-center text-slate-800 shadow-2xs group-hover:scale-105 transition-transform">
-              <Twitter className="w-5 h-5" />
+            <div className="pt-2 border-t border-slate-100">
+              <a
+                href="https://vikash-joshi.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => onToast('Opening Pandit Sarwan Ji Astrology Website', 'info')}
+                className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#111827] hover:bg-[#4F46E5] text-white text-xs font-semibold transition-colors shadow-xs active:scale-98"
+              >
+                <span>View Live Project</span>
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
             </div>
-            <div className="overflow-hidden">
-              <span className="text-[11px] font-semibold text-[#64748B] uppercase tracking-wider block">
-                Twitter / X
-              </span>
-              <span className="text-xs font-bold text-[#111827] truncate block">
-                @vikashjoshi
-              </span>
-            </div>
-          </a>
+          </div>
         </div>
       </section>
     </div>

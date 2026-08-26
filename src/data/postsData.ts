@@ -18,6 +18,7 @@ export const initialPostsData: PostItem[] = [
     date: 'Just now',
     location: 'QA Testing Hub',
     category: 'QA / Software Testing',
+    mediaType: 'image',
     tags: ['qa', 'testing', 'playwright', 'automation', 'portfolio'],
     comments: [
       {
@@ -46,6 +47,7 @@ export const initialPostsData: PostItem[] = [
     date: '1 hour ago',
     location: 'Web Development',
     category: 'Astrology / Web Project',
+    mediaType: 'image',
     tags: ['astrology', 'react', 'seo', 'webdesign', 'consultation'],
     comments: [
       {
@@ -67,6 +69,7 @@ export const initialPostsData: PostItem[] = [
     date: '2 hours ago',
     location: 'Studio / San Francisco',
     category: 'Design Systems',
+    mediaType: 'image',
     tags: ['design', 'minimalism', 'ui', 'craft'],
     comments: [
       {
@@ -82,6 +85,29 @@ export const initialPostsData: PostItem[] = [
         content: 'Love the subtle contrast ratios!',
         timestamp: '45m ago',
         likes: 2,
+      },
+    ],
+  },
+  {
+    id: 'post-video-showcase',
+    image: '/images/posts/post-2.svg',
+    videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
+    title: 'Interactive Test Automation Demo',
+    caption: 'Live demo of automated Playwright test execution running parallel cross-browser verification tests with high-fidelity visual assertions.',
+    likes: 248,
+    commentsCount: 31,
+    date: '5 hours ago',
+    location: 'Automation Lab',
+    category: 'Automation Demo',
+    mediaType: 'video',
+    tags: ['automation', 'playwright', 'video', 'qa'],
+    comments: [
+      {
+        id: 'c-v1',
+        username: 'tech_lead_rahul',
+        content: 'The parallel execution speed is blistering fast!',
+        timestamp: '2h ago',
+        likes: 8,
       },
     ],
   },

@@ -50,6 +50,8 @@ export interface PostComment {
 export interface PostItem {
   id: string;
   image: string;
+  videoUrl?: string;
+  mediaType?: 'image' | 'video';
   title?: string;
   caption: string;
   likes: number;
